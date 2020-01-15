@@ -1,14 +1,16 @@
+#                                Contenu
+
 Ce fichier explique brièvement comment mettre en place un environnement de
 développement en C et liste les outils les plus courants en lien avec le C.
 
-##IMPORTANT:
+## IMPORTANT:
 
 Le gros de ce tutoriel a été écrit pour linux, et les Makefile ont été faits en
 partant du principe que vous utilisez gcc. Si vous souhaitez utiliser un autre
 OS ou compilateur vous devrez adapter les Makefile ou bien modifier le code
 (dans le cas où vous seriez sous Windows ou MacOS).
 
-#1 - IDE ou éditeur de code ?
+# 1 - IDE ou éditeur de code ?
 
 Afin de pouvoir travailler en C, le premier choix que vous devez faire est :
 vais-je utiliser un éditeur de code, qui servira juste à surligner et écrire
@@ -31,7 +33,7 @@ de commande.
 Quelque soit votre choix je vous fais tout de même des recommendations
 d'éditeurs de code et d'IDE.
 
-#2 - IDE
+# 2 - IDE
 
 N'utilisant moi-même pas d'IDE j'ai quelques difficultés à vous en recommander,
 toutefois pour rester dans les sentiers battus :
@@ -56,7 +58,7 @@ Il existe beaucoup d'autres IDE sur le marché, faites vos recherches si vous
 voulez en utiliser un. Encore une fois je vous recommande de plutôt utiliser la
 ligne de commande, mais vous êtes libres de faire ce que vous voulez.
 
-#3 - Editeurs de code
+# 3 - Editeurs de code
 
 Même si j'ai recommandé l'usage d'éditeurs de code en général, il m'est
 difficile de vous en recommander un en particulier parce que la plupart sont
@@ -76,7 +78,7 @@ Faites vous votre opinion, mais vous vous rendrez vite compte qu'il est facile
 de passer de l'un à l'autre sans grande difficulté contrairement aux IDE, donc
 vous ne vous enfermez pas en faisant un choix plutôt qu'un autre.
 
-#4 - Compilateur
+# 4 - Compilateur
 
 Pour travailler en ligne de commande, le premier outil dont vous aurez besoin
 est évidemment un compilateur. En effet le C est un langage compilé, c'est à
@@ -124,7 +126,7 @@ un meilleur choix :
  l'occasion de développer sous Mac.
 
 
-#5 - make
+# 5 - make
 
 Souvent pour compiler vos projets vous ne voudrez pas réécrire toutes vos lignes
 de compilation à la main, pour cela je vous recommande l'omniprésent make s'il
@@ -132,7 +134,7 @@ est disponible sur votre plateforme. make peut auss trouver seul comment
 compiler des projets simples en C, et son usage sera détaillé pendant les
 tutoriels.
 
-#6 - Debugger
+# 6 - Debugger
 
 En plus de cela vous aurez surement besoin d'outils de débuggages afin de
 trouver les problèmes dans votre code. Les deux outils que je connais sont :
