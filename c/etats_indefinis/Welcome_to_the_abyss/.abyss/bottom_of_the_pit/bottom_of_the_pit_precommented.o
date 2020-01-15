@@ -1,0 +1,53 @@
+GAS LISTING bottom_of_the_pit.s 			page 1
+
+
+   1              	/*
+   2              	J'ai confiance que vous ne soyez pas arrivé là par hasard, mais au cas où je rappelle que ce fic
+   3              	
+   4              	La partie précédente de cette appendice avait pour but de montrer comment les fonctions en C éta
+   5              	
+   6              	Contributeurs : Rezal P18
+   7              	*/
+   8              	
+   9              	.text
+  10              	.globl main
+  11              	
+  12              	/*
+  13              	Comme vous avez pu le lire dans la partie précédente, pour écrire une fonction en assembleur il 
+  14              	
+  15              	Mais ces "fonctions" sont elles vraiment des fonctions comme en C. Pour le vérifier, écrivons un 
+  16              	*/
+  17              	
+  18              	main:
+  19              	  # On initialise les registres.
+  20 0000 B8000000 	  movl $0, %eax   # (L1)
+  20      00
+  21 0005 BB000000 	  movl $0, %ebx   # (L2)
+  21      00
+  22 000a B9000000 	  movl $0, %ecx   # (L3)
+  22      00
+  23              	
+  24              	increment:
+  25 000f 83C001   	  addl $1, %eax   # (L4)
+  26              	
+  27              	/*
+  28              	Le code que nous avons écrit jusqu'ici est assez simple, mais que fait il vraiment ?
+  29              	
+  30              	Exécutons ce programme pas à pas après être entré dans le main pour le comprendre.
+  31              	
+  32              	D'abord on rencontre (L1) et on met eax à 0.
+  33              	Ensuite on rencontre (L2) et on met ebx à 0.
+  34              	De même on rencontre (L3) et on met ecx à 0.
+  35              	
+  36              	Mais ensuite, que se passe t'il ? Sors t'on du main et du programme comme ce serait le cas en C ? P
+  37              	
+  38              	En
+  39              	*/
+GAS LISTING bottom_of_the_pit.s 			page 2
+
+
+DEFINED SYMBOLS
+ bottom_of_the_pit.s:18     .text:0000000000000000 main
+ bottom_of_the_pit.s:24     .text:000000000000000f increment
+
+NO UNDEFINED SYMBOLS

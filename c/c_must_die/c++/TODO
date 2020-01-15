@@ -1,0 +1,32 @@
+Il faut que je refasse ce tutoriel sur le C++ il est un peu nul. Une idée serait
+de prendre un exemple commun que je traiterait aussi d'une façon semblable en
+Rust.
+
+Une idée d'exemple serait d'écrire un programme qui prenne en argument une série
+de mots séparés par des espaces et renvoie la liste triée par ordre
+alphanumérique.
+
+Pour l'implémentation du tutoriel en C++ il faudrait que je mette certains points
+en évidence :
+(les plus)
+ - La définition de classes;
+ - L'héritage;
+ - Le pass by reference;
+ - new et delete;
+(les moins)
+ - Le C++ est plein de bazar;
+ - Le C++ est rétrocompatible avec le C;
+
+Dans la conclusion je devrais aussi souligner que le C++ est concurrencé dans
+des aspects différents par des langages qui le surpasse dans leur catégorie :
+le C pour le bas niveau, Java pour le haut-niveau et Rust pour le milieu
+
+L'implémentation proposée utilisera une classe "Mot" qui héritera de string
+et réutilisera le code du type pile du tutoriel compilation avancée mais avec
+des commentaires différents pour montrer le problème de la rétrocompatibilité.
+
+Pour trier les mots, on utilisera une pile triée et une pile buffer. On fera
+évidemment un tri par insertion (i.e. au moment d'insérer dans la pile triée on
+pop les mots et on les mets dans le buffer tant qu'ils sont plus loin que le mot
+à insérer et à la fin on les remets dans l'ordre d'origine). Notez que ce tri
+n'est pas très efficace.
