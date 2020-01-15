@@ -1,3 +1,5 @@
+#                                   Contenu
+
 Ce dossier constitue le corps du tutoriel sur le langage C et ses usages. Je ne
 recommande à personne de lire tout le tutoriel d'un coup, et pour que vous
 puissiez profiter au maximum du tutoriel nous avons établi deux façons de s'en
@@ -13,7 +15,7 @@ est précisée afin que vous puissiez passer ce qui ne vous intéresse pas.
 
 
 
-                                    Parcours
+#                                   Parcours
 
 Plusieurs parcours sont proposés pour ce tutoriel, triés par difficulté et temps
 de lecture croissants. Notez qu'au sein de chacune des parties de ce tutoriel
@@ -23,7 +25,7 @@ les informations plus vites.
 Les quatres parcours proposés sont :
 
 
- -> 1* : "J'ai trouvé une offre de stage en finance avec le prérequis C/C++"
+##   1* : "J'ai trouvé une offre de stage en finance avec le prérequis C/C++"
 
 Pas forcément un grand adepte de l'informatique en général, vous cherchez juste
 une rapide introduction au C afin de savoir quoi dire si on vous en parle, ou
@@ -35,7 +37,7 @@ Cela vous donnera une rapide vue de ce qu'est le C et de son lien avec le C++
 
 
 
- -> 2** : "Je dois faire du C pour le projet de groupe"
+##   2** : "Je dois faire du C pour le projet de groupe"
 
 Le traquenard ultime. On vous avait promis qu'après la prépa l'école
 d'ingénieur serait facile, mais vous enchainez les projets de groupe
@@ -70,7 +72,7 @@ programmes simples et de faire avancer ce que vous avez en tête.
 
 
 
- -> 3*** : "J'ai du temps, il y a sport demain matin"
+##   3*** : "J'ai du temps, il y a sport demain matin"
 
 Adepte de l'informatique, vous connaissez sans doute déjà plusieurs langages
 de programmation et souhaitez ajouter une nouvelle corde à votre arc. Vous
@@ -89,7 +91,7 @@ déjà.
 
 
 
- -> 4**** : "A part l'informatique tous les cours sont pipos de toute façon"
+##   4**** : "A part l'informatique tous les cours sont pipos de toute façon"
 
 Il y a déjà longtemps que vous avez pénétré dans les terres arides de
 l'informatique théorique, à tel point que vous ne sauriez même plus dire ce qui
