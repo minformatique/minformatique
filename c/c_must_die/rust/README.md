@@ -1,3 +1,5 @@
+#                                Contenu
+
 Ce dossier fait partie de l'épilogue du tutoriel sur le C et porte sur le
 langage Rust. Il a pour but de montrer dans quelle mesure le Rust peut-être
 considéré comme une alternative au C ou au C++ pour un projet.

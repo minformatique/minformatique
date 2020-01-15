@@ -1,3 +1,5 @@
+#                                   Contenu
+
 Ce tutoriel présente quelques réflexions sur le C++ vu depuis le C, et tente de
 mettre en lumière les innovations que le C++ apporte sur son prédécesseur ainsi
 que les défauts que la démarche du C++ amène.
@@ -27,45 +29,45 @@ deux piles : une pile triée et une pile buffer. Plutôt que de faire de longues
 phrases je montrer comment fonctionne ce tri sur un exemple : on appelle notre
 programme sur les mots ohm, volt et ampere (dans cet ordre).
 
-Etape 0 : Etat initial, notez que Input est FIFO alors que les piles sont LIFO
-Input : [ohm, volt, ampere]
-Tri : ()
-Buffer : ()
+Etape 0 : Etat initial, notez que Input est FIFO alors que les piles sont LIFO\
+Input : [ohm, volt, ampere]\
+Tri : ()\
+Buffer : ()\
 
 Etape 1 : On récupère ohm et, comme la pile triée est encore vide, on l'ajoute
-au sommet de tri.
-Input : [volt, ampere]
-Tri : (ohm)
-Buffer : ()
+au sommet de tri.\
+Input : [volt, ampere]\
+Tri : (ohm)\
+Buffer : ()\
 
-Etape 2 : On récupère volt et on le compare au sommet de la pile (ohm). Comme ohm
-vient avant volt dans l'ordre alphanumérique on remet ohm dans la pile trie puis
-on ajoute volt au sommet de la pile.
-Input : [ampere]
-Tri : (ohm, volt)
-Buffer : ()
+Etape 2 : On récupère volt et on le compare au sommet de la pile (ohm). Comme
+ohm vient avant volt dans l'ordre alphanumérique on remet ohm dans la pile trie
+puis on ajoute volt au sommet de la pile.\
+Input : [ampere]\
+Tri : (ohm, volt)\
+Buffer : ()\
 
-Etape 3 : La pile buffer est vide donc on passe au mot suivant directement.
+Etape 3 : La pile buffer est vide donc on passe au mot suivant directement.\
 
 Etape 4 : On récupère le mot ampere sur l'input. On le compare au sommet de la
 pile, or ampere vient avant volt dans l'ordre choisi donc on met volt sur la
-pile buffer.
-Input : [ampere]
-Tri : (ohm)
-Buffer : (volt)
+pile buffer.\
+Input : [ampere]\
+Tri : (ohm)\
+Buffer : (volt)\
 
 Etape 5 : On compare ampere à ohm et comme ampere vient avant ohm on met aussi
 ohm sur la pile buffer. Il n'y a plus rien dans la pile Tri donc on y ajoute
-ampere.
-Input : []
-Tri : (ampere)
-Buffer : (volt, ohm)
+ampere.\
+Input : []\
+Tri : (ampere)\
+Buffer : (volt, ohm)\
 
 Etape 6 : La pile buffer n'est pas vide, donc on remet son contenu dans la pile
-triée toujours en resmectant l'ordre LIFO.
-Input : []
-Tri : (ampere, ohm, volt)
-Buffer : ()
+triée toujours en resmectant l'ordre LIFO.\
+Input : []\
+Tri : (ampere, ohm, volt)\
+Buffer : ()\
 
 L'input est vide et la pile tri contient bien les mots triés par ordre
 alphanumérique.

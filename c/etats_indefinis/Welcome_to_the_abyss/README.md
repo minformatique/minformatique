@@ -1,3 +1,5 @@
+#                                 Contenu
+
 Ce tutoriel porte sur des subtilités du C que vous n'avez de toute évidence pas
 besoin de connaitre. Les points abordés sont les pointeurs de fonctions, les
 vtable, l'héritage et l'implémentation des fonctions en C.
@@ -7,7 +9,7 @@ conseille de lire d'abord tous les autres tutoriels (y compris l'épilogue qui
 parle entre autres du C++) avant de vous aventurer dans ce lieu banni.
 
 
-                                  Parcours
+#                                 Parcours
 
 Dans la mesure où ce dossier comporte beaucoup de fichiers je vous conseille de
 ne pas les lire du tout :-) . Si toutefois vous ignorez mon avertissement, je
@@ -20,7 +22,7 @@ Comme toujours ne vous arrêtez pas sur l'implémentation, elle a de nombreux
 défauts et n'est pas généralisable de toute façon.
 
 
-                                  Index
+#                                  Index
 
 A
 

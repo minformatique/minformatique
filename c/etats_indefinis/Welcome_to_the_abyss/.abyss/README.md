@@ -1,8 +1,11 @@
+#                                   Contenu
+
 Ce dossier (caché) fait partie du tutoriel du Rezal sur le C et a pour but
-d'expliquer plus en profondeur l'implémentation des fonctions en C en regardant concrètement le code généré en assembleur.
+d'expliquer plus en profondeur l'implémentation des fonctions en C en regardant
+concrètement le code généré en assembleur.
 
 
-                                    Parcours
+#                                   Parcours
 
 Le parcours conseillé pour lire ce tutoriel est :
 

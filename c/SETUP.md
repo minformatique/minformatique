@@ -1,9 +1,14 @@
 Ce fichier explique brièvement comment mettre en place un environnement de
 développement en C et liste les outils les plus courants en lien avec le C.
 
-IMPORTANT : Le gros de ce tutoriel a été écrit pour linux, et les Makefile ont été faits en partant du principe que vous utilisez gcc. Si vous souhaitez utiliser un autre OS ou compilateur vous devrez adapter les Makefile ou bien modifier le code (dans le cas où vous seriez sous Windows ou MacOS).
+##IMPORTANT:
 
-1 - IDE ou éditeur de code ?
+Le gros de ce tutoriel a été écrit pour linux, et les Makefile ont été faits en
+partant du principe que vous utilisez gcc. Si vous souhaitez utiliser un autre
+OS ou compilateur vous devrez adapter les Makefile ou bien modifier le code
+(dans le cas où vous seriez sous Windows ou MacOS).
+
+#1 - IDE ou éditeur de code ?
 
 Afin de pouvoir travailler en C, le premier choix que vous devez faire est :
 vais-je utiliser un éditeur de code, qui servira juste à surligner et écrire
@@ -23,19 +28,19 @@ retour à la case départ et vous devrez quand même apprendre à travailler en
 ligne de commande. Donc faites vous une faveur et utilisez les outils en ligne
 de commande.
 
-Quelque soit votre choix je vous fais tout de même des recommendations d'éditeurs
-de code et d'IDE.
+Quelque soit votre choix je vous fais tout de même des recommendations
+d'éditeurs de code et d'IDE.
 
-2 - IDE
+#2 - IDE
 
 N'utilisant moi-même pas d'IDE j'ai quelques difficultés à vous en recommander,
 toutefois pour rester dans les sentiers battus :
 
- - eclipse : Si vous avez déjà utilisé des IDE propriétaires vous avez sans doute
- remarqués qu'ils se ressemblent tous un peu. C'est parce que la plupart sont
- basés sur le projet open-source eclipse. Je trouve personnelement cet IDE un
- peu laid, mais au moins il est fonctionnel et en le choissisant vous ne pouvez
- pas faire fausse route (parmi les IDE en tous cas).
+ - eclipse : Si vous avez déjà utilisé des IDE propriétaires vous avez sans
+ doute remarqués qu'ils se ressemblent tous un peu. C'est parce que la plupart
+ sont basés sur le projet open-source eclipse. Je trouve personnelement cet IDE
+ un peu laid, mais au moins il est fonctionnel et en le choissisant vous ne
+ pouvez pas faire fausse route (parmi les IDE en tous cas).
 
  - Visual Studio (Windows uniquement) : Un IDE que j'ai moi-même beaucoup
  utilisé jusqu'à en atteindre les limites et abandonner complètement les IDE.
@@ -51,7 +56,7 @@ Il existe beaucoup d'autres IDE sur le marché, faites vos recherches si vous
 voulez en utiliser un. Encore une fois je vous recommande de plutôt utiliser la
 ligne de commande, mais vous êtes libres de faire ce que vous voulez.
 
-3 - Editeurs de code
+#3 - Editeurs de code
 
 Même si j'ai recommandé l'usage d'éditeurs de code en général, il m'est
 difficile de vous en recommander un en particulier parce que la plupart sont
@@ -71,7 +76,7 @@ Faites vous votre opinion, mais vous vous rendrez vite compte qu'il est facile
 de passer de l'un à l'autre sans grande difficulté contrairement aux IDE, donc
 vous ne vous enfermez pas en faisant un choix plutôt qu'un autre.
 
-4 - Compilateur
+#4 - Compilateur
 
 Pour travailler en ligne de commande, le premier outil dont vous aurez besoin
 est évidemment un compilateur. En effet le C est un langage compilé, c'est à
@@ -83,23 +88,23 @@ sont de loin :
  de l'open-source. Il s'agit sans doute de l'un des projets les plus importants
  du mouvement GNU, et également l'un de ceux qui aura eu le plus de succès.
  gcc est n'est pas seulement le compilateur le plus utilisé, il incarne
- également l'archétype du compilateur obscur. Peu de gens savent vraiment comment
- fonctionne gcc, mais si vous lui passez en entrée un code simple utilisant des
- additions d'entiers, il est probable que gcc trouve des optimisations plus ou
- moins exotiques pour finalement produire un executable absolument
- incompréhensible utilisant surtout des shifts, mais qui étonnament fera
- exactement la même chose que ce que vous aviez écrit. Les executables produits
- par gcc sont extrèmement compacts et optimisés, et la vitesse de compilation de
- gcc est encore aujourd'hui imbattable.
+ également l'archétype du compilateur obscur. Peu de gens savent vraiment
+ comment fonctionne gcc, mais si vous lui passez en entrée un code simple
+ utilisant des additions d'entiers, il est probable que gcc trouve des
+ optimisations plus ou moins exotiques pour finalement produire un executable
+ absolument incompréhensible utilisant surtout des shifts, mais qui étonnament
+ fera exactement la même chose que ce que vous aviez écrit. Les executables
+ produits par gcc sont extrèmement compacts et optimisés, et la vitesse de
+ compilation de gcc est encore aujourd'hui imbattable.
 
  - clang : Depuis bien des années l'industrie cherche à remplacer le C (qui date
  de 1972!) par un langage plus moderne, et pour accélerer cette émergence
  plusieurs gros acteurs (avec Apple en tête de file) se sont réunis derrière un
  projet pour créer une architecture de compilation réutilisable nommée LLVM.
  Pour démontrer l'efficacité de LLVM, mais aussi pour fournir une alternative au
- toujours plus obscur gcc, le projet LLVM a été utilisé pour créer un compilateur
- C nommé clang. clang est également très performant dans ses optimisations de
- code et ses temps de compilation même s'il n'égale pas gcc.
+ toujours plus obscur gcc, le projet LLVM a été utilisé pour créer un
+ compilateur C nommé clang. clang est également très performant dans ses
+ optimisations de code et ses temps de compilation même s'il n'égale pas gcc.
 
  - msvc : Sous Windows seulement, "Microsoft Visual C", il s'agit du compilateur
  C utilisé utilisé en interne par Visual Studio. Je le met ici seulement pour
@@ -119,7 +124,7 @@ un meilleur choix :
  l'occasion de développer sous Mac.
 
 
-5 - make
+#5 - make
 
 Souvent pour compiler vos projets vous ne voudrez pas réécrire toutes vos lignes
 de compilation à la main, pour cela je vous recommande l'omniprésent make s'il
@@ -127,10 +132,10 @@ est disponible sur votre plateforme. make peut auss trouver seul comment
 compiler des projets simples en C, et son usage sera détaillé pendant les
 tutoriels.
 
-6 - Debugger
+#6 - Debugger
 
-En plus de cela vous aurez surement besoin d'outils de débuggages afin de trouver
-les problèmes dans votre code. Les deux outils que je connais sont :
+En plus de cela vous aurez surement besoin d'outils de débuggages afin de
+trouver les problèmes dans votre code. Les deux outils que je connais sont :
 
  - gdb ("GNU Debugger") : Un débuggeur assez ancien mais toujours solide. Il
  s'utilise en ligne de commande (vous pourrez trouver la documentation sur

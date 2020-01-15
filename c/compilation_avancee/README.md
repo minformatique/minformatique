@@ -1,3 +1,5 @@
+#                                 Contenu
+
 Cette partie du tutoriel sera la dernière pour beaucoup d'entre vous alors j'en
 ai fait une sorte de point culminant, avec une utilisation parfois non triviale
 de tout ce qui a été vu avant. Les notions abordées sont nombreuses et je ne
@@ -18,7 +20,7 @@ Notez que cette partie du tutoriel est globalement complexe, avec quelques
 éléments 2** mais le gros est plutôt 3*** voire 4****
 
 
-                                Parcours
+#                                Parcours
 
 (Vous voyez, je vous avais dis que cette partie finirait par servir ;-) )
 
@@ -46,11 +48,9 @@ cela ne vous interessera pas forcément dans un premier temps.
 
 
 Si vous souhaitez vraiment aller au fond des choses et voir à la fois comment on
-peut implémenter du C sûr ("Safe") mais aussi voir les difficultés rencontrées
-à cause d'un usage de pratiques mixtes alors vous pourrez, après avoir fait le
-parcours 3***, regarder le fichier symbole.c pour voir le type de patterns à
-utiliser en safe C, et lire le fichier expression.c qui explique un peu plus en
-détail les problèmes d'implémentation les plus importants.
+peut implémenter du C sûr ("Safe") mais aussi les difficultés rencontrées à
+l'implémentation alors vous pourrez, après avoir fait le parcours 3***,
+regarder le fichier symbole.c et lire le fichier expression.c.
 
 Même en 4**** je ne vous conseille pas de vous pencher trop sur le détail de
 l'implémentation, après tout il est sans importance et ne la plupart du code ne
