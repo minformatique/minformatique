@@ -20,7 +20,7 @@ est précisée afin que vous puissiez passer ce qui ne vous intéresse pas.
 Plusieurs parcours sont proposés pour ce tutoriel, triés par difficulté et temps
 de lecture croissants. Notez qu'au sein de chacune des parties de ce tutoriel
 vous trouverez à nouveau des mini parcours et des index vous aidant à trouver
-les informations plus vites.
+les informations plus vite.
 
 Les quatres parcours proposés sont :
 
