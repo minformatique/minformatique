@@ -103,7 +103,7 @@ raspberry pis que de vêtements propres.
 Dernier bastion encore inconquis, le C, ancien, plus enseigné en cours et dont
 le temps a en partie effacé la documentation. Python est écrit en C, Java
 s'inspire du C, le C++ est une tentative de faire mieux que le C...
-Toutes les pistes mènent au C, et vous chercher à comprendre en profondeur le C
+Toutes les pistes mènent au C, et vous cherchez à comprendre en profondeur le C
 pour ce qu'il a d'originel et de structurant sur ses successeurs.
 
 Mais avant de vous engager sur ce chemin tortueux, peut-être est-il temps de se
