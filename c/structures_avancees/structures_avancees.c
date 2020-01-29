@@ -38,12 +38,6 @@ l'abstraction dont il a besoin en s'appuyant sur les outils bas-niveau que le C
 met à sa disposition.
 
 Quelques choses importantes à savoir sur ces structures avancées :
- - Cette structures n'existent que pendant la phase de compilation, lors de
- l'execution le programme n'utilisera que des types primitifs que la machine.
- C'est à dire que le compilateur va se charger de générer avec des types
- primitifs un programme dont la logique est équivalente à celle que vous écrivez
- en utilisant des structures avancées (la conversion est en général assez simple
- comme vous pourrez vous en rendre compte).
 
  - Les mêmes structure avancées existent aussi en C++, mais les règles y sont
  différentes donc faites attention !
