@@ -3,3 +3,9 @@ librairie_standard.elf: librairie_standard.c
 
 librairie_standard.exe: librairie_standard_w.c
 		clang.exe -Wall -o librairie_standard.exe librairie_standard_w.c
+
+linux: librairie_standard.elf
+	echo "Compilation de librairie_standard.elf achevée."
+
+windows: librairie_standard.exe
+	echo "Compilation de libraire_standard.exe achevée."

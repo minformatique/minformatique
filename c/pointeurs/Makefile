@@ -4,3 +4,9 @@ pointeurs.elf : pointeurs.c
 
 pointeurs.exe : pointeurs_w.c
 	clang.exe -Wall pointeurs_w.c -o pointeurs.exe
+
+linux: pointeurs.elf
+	echo "Compilation de pointeurs.elf achevée."
+
+windows: pointeurs.exe
+	echo "Compilation de pointeurs.exe achevée."

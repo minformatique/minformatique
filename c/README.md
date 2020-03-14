@@ -13,6 +13,13 @@ tutoriels et expérimenter par vous même.
 Notez que sur chaque fichier, la difficulté des notions abordées en commentaire
 est précisée afin que vous puissiez passer ce qui ne vous intéresse pas.
 
+Dans la mesure où la plupart des tutoriels ont été écrits pour Linux et pour
+Windows, vous trouverez tout en double dans les dossiers des tutoriel.
+Par convention (remplacer foo en fonction du contexte):
+ - foo.c désigne le code source pour Linux;
+ - foo_w.c désigne le code source pour Windows;
+ - "make linux" est la commande à utiliser pour compiler sous Linux;
+ - "make windows" est la commande à utiliser pour compiler sous Windows;
 
 
 #                                   Parcours
