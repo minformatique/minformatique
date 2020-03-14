@@ -7,7 +7,7 @@ Contributeurs : Rezal P18
 
 /*
 
-                                Headers
+                              Headers - 2**
 
 Les fichiers headers ("en-tête") en C sont des fichiers d'interface. Leur but
 est de décrire le contenu d'une librairie afin que votre code sache comment
@@ -18,17 +18,16 @@ en C++.
 
 Les fichiers headers sont des fichiers de textes lisibles par un humain, si
 vous le souhaitez vous pouvez d'ailleurs regarder le contenu de fichiers headers
-de librairie que vous utilisez souvent (string.h, stdio.h etc...), mais notez que
-les headers de ces librairies vont souvent être assez complexes.
+de librairie que vous utilisez souvent (string.h, stdio.h etc...), mais notez
+que les headers de ces librairies vont souvent être assez complexes.
 
 En plus de l'interface de la librairie en question, les fichiers headers
 contiennent aussi souvent un peu de documentation sur la librairie.
 */
 
-
 /*
 
-                        Header Include Once Guard
+                      Header Include Once Guard - 3***
 
 Souvent au début d'un fichier header vous trouverez un code semblable à ce qui
 suit (le ifndef - define et endif à la fin du fichier). Le but de ce code est
@@ -46,7 +45,6 @@ header on verra qu'il n'est plus nécessaire de faire l'import.
 
 #ifndef LIB_PILE_TUTORIAL
 #define LIB_PILE_TUTORIAL
-
 
 /*
 Comme souvent dans les librairies, certaines valeurs sont définies par défaut
@@ -72,7 +70,6 @@ prototypes des routines définies par la librairie.
 */
 #include <stdlib.h>
 
-
 /*
 On définit le type Pile. Notez que pour être utilisable dans d'autre fichiers
 il faut inclure la définition de la structure dans le header et pas juste la
@@ -81,22 +78,22 @@ déclaration.
 struct Pile {
   /*
   Un pointeur vers le tableau des pointeurs contenus dans la pile.
-  J'ai choisi d'utiliiser des pointeurs bruts (void *) comme type de support pour
-  la pile afin d'obtenir un maximum de généricité. Grâce à cette implémentation
-  on peut faire des piles de n'importe quel type d'éléments en empilant les
-  pointeurs de ces éléments (on peut même en faire une pile d'éléments
-  hétérogènes !). Notez cependant que cette implémentation (comparée à une autre
-  plus restrictive sur le type des données à empiler) est beaucoup plus risquée,
-  notamment parce qu'il n'est jamais possible de prédire le type réel de ce qui
-  se trouve derrière le pointeur rendu par pop.
+  J'ai choisi d'utiliiser des pointeurs bruts (void *) comme type de support
+  pour la pile afin d'obtenir un maximum de généricité. Grâce à cette
+  implémentation on peut faire des piles de n'importe quel type d'éléments en
+  empilant les pointeurs de ces éléments (on peut même en faire une pile
+  d'éléments hétérogènes !). Notez cependant que cette implémentation (comparée
+  à une autre plus restrictive sur le type des données à empiler) est beaucoup
+  plus risquée, notamment parce qu'il n'est jamais possible de prédire le type
+  réel de ce qui se trouve derrière le pointeur rendu par pop.
 
   Dans la suite de ce tutoriel je présenterai une autre façon d'avoir une seule
-  implémentation qui couvre plusieurs types possibles (mais l'autre implémentation
-  sera plus robuste). Le terme informatique derrière cette notion est "l'héritage",
-  ici on exploite allègrement le fait que tous les pointeurs en C "héritent" du
-  type void*. Notez cependant que l'héritage est une notion introduite par la
-  programmation orientée objet, et que parler d'héritage pour les pointeurs bruts
-  est assez impropre.
+  implémentation qui couvre plusieurs types possibles (mais l'autre
+  implémentation sera plus robuste). Le terme informatique derrière cette notion
+  est "l'héritage", ici on exploite allègrement le fait que tous les pointeurs
+  en C "héritent" du type void*. Notez cependant que l'héritage est une notion
+  introduite par la programmation orientée objet, et que parler d'héritage pour
+  les pointeurs bruts est assez impropre.
   */
   void **content;
   /*
@@ -112,14 +109,12 @@ struct Pile {
   size_t taille_pile_max;
 };
 
-
-
-
 /*
 Initialisation d'une pile.
 
-Le mot réservé extern sigbifie juste que cette routine est accessible depuis
-l'exterieur de la librairie.
+Le mot réservé extern signifie juste que cette routine est définie à l'exterieur
+de la librairie, sinon le compilateur ne vas comprendre ce que vous voulez
+faire.
 */
 extern int new_pile(struct Pile *instance);
 
@@ -137,9 +132,9 @@ extern int pile_append(struct Pile *instance, void **element);
 
 /*
 La méthode pop de la pile, qui prend en argument la pile de laquelle on veut
-retirer un élément et un pointeur dans lequel on souhaite stocker notre résultat.
-Notez que comme le C est pass by value, on n'aurait pas pu définir cette méthode
-comme :
+retirer un élément et un pointeur dans lequel on souhaite stocker notre
+résultat. Notez que comme le C est pass by value, on n'aurait pas pu définir
+cette méthode comme :
 
 int pile_pop(struct Pile *instance, void *element);
 
@@ -147,14 +142,16 @@ car modifier element n'aurait pas permis de modifier le pointeur d'origine, de
 plus il n'y a pas de moyen de prévoir de l'exterieur la taille nécessaire pour
 stocker la taille d'un élément de la pile, donc on ne pourrait pas copier la
 valeur de l'élément sur la pile derrière le pointeur élément car il y aurait
-trop de risques que element n'ait pas assez d'espace pour accueillir notre valeur.
+trop de risques que element n'ait pas assez d'espace pour accueillir notre
+valeur.
 */
 extern int pile_pop(struct Pile *instance, void **element);
-
 
 /*
 Libère l'espace mémoire alloué à la pile, à appeler après avoir fini de
 l'utiliser.
 */
 extern int free_pile(struct Pile *instance);
-#endif /* end of include guard:  */
+
+// Fin du header include once guard
+#endif
