@@ -35,14 +35,14 @@ int oppose(int *array, size_t taille);
                             Les types en C - 1*
 
 Le C est un language de bas niveau, c'est à dire que le fonctionnement du C
-reflète fortement le fonction de la machine sous jacente, contrairement à
+reflète fortement le fonctionnement de la machine sous jacente, contrairement à
 d'autres languages comme Python ou Java qui visent au contraire à masquer le
 fonctionnement de la machine pour ne présenter que des conceptes abstraits à
 l'utilisateur.
 
-La manifestation de ce bas-niveau est le fonctionnement des types en C. Un type
-en C est un concept dont la taille peu être représenté de façon fixe en mémoire.
-Par exemple, un int occupera 4 octets et un char 1. Un exemple d'objet dont la
+La manifestation de ce bas-niveau est le système des types en C. Un type en C
+est un concept dont la taille peu être représenté de façon fixe en mémoire. Par
+exemple, un int occupera 4 octets et un char 1. Un exemple d'objet dont la
 taille n'est pas constante en mémoire est la chaine de caractère ("piche"
 prendrait au minimum 5 octets en mémoire alors que "min'formatique" en prendrait
 au moins 14). On pourrait aussi citer les listes, les arbres et même les
@@ -51,12 +51,12 @@ tableaux.
                                 pointeurs - 1*
 
 Pour s'abstraire de cette limitation (qui est présente dans la machine elle
-même), le C va utiliser la notion de pointeur. Est un pointeur en C est une
-adresse mémoire (virtuelle, mais peu importe). Or la mémoire sur votre machine
-n'est pas infinie, et on peut à l'avance dire que sur une machine 64bits, une
-adresse mémoire prendra au plus ... 64 bits. C'est en partie de là que vient la
+même), le C va utiliser la notion de pointeur. Un pointeur en C est une adresse
+mémoire (virtuelle, mais peu importe). Or la mémoire sur votre machine n'est
+pas infinie, et on peut à l'avance dire que sur une machine 64bits, une adresse
+mémoire prendra au plus ... 64 bits. C'est en partie de là que vient la
 dénomination, et c'est aussi ce qui explique les ordinateurs 32 bits ne peuvent
-pas avoir plus de 2**32 - 1 = 2GB de RAM.
+pas avoir plus de 2**32 = 4GB de RAM (2GB en pratique pour d'autres raisons).
 
 Le C va ensuite utiliser ces adresses mémoires pour exploiter les données que
 l'on y a stockées, permettant ainsi de construire des objets plus complexes
@@ -65,29 +65,33 @@ dans le main.
 
                                 tableaux - 1*
 
-Ces pointeurs sont ce qui permet en C de définir des tableaux. La syntaxe pour
-utiliser des tableaux en C est très semblable à celle d'un language comme Java,
-même si le fonctionnement des tableaux en interne est très différent entre les
-deux languages. En fait les tableaux en C ne sont qu'une syntaxe raccourcie pour
-manipuler les pointeurs d'une façon plus sûre. Un tableau en C peut être vu
-comme un pointeur + une taille, et est beaucoup plus simple à utiliser qu'un
-pointeur seul. Notez cependant que cette abstraction est assurée par compilateur
-(et pas pendant l'exécution, contrairement à d'autres languages), ce qui
-implique certaines contraintes, notamment que les tableaux en C doivent avoir
-une taille prévisible lors de la compilation.
+Les pointeurs sont ce qui permet en C de définir des tableaux. La syntaxe pour
+utiliser des tableaux en C est très semblable à celle d'un language comme Java.
+
+En fait les tableaux en C ne sont qu'une syntaxe raccourcie pour manipuler les
+pointeurs d'une façon plus sûre. Un tableau en C peut être vu comme un pointeur
++ une taille, et est beaucoup plus simple à utiliser qu'un pointeur seul. Notez
+cependant que cette abstraction est assurée par compilateur (et pas pendant
+l'exécution, contrairement à d'autres languages), ce qui implique certaines
+contraintes, notamment que les tableaux en C doivent avoir une taille prévisible
+lors de la compilation.
 
 Une question qui peut arriver rapidement en lisant cela est : "Pourquoi diable
-utiliserais-je des pointeurs en C lorsque les tableaux sont disponibles?". La
-réponse à cette question est tout simplement : "Parce que vous n'avez pas le
-choix :-)" En effet, il y a beaucoup de cas de figures où en C vous êtes
-contraints d'utiliser des pointeurs alors que vous voudriez utiliser des
-tableaux. La raison implicite pour laquelle le C vous force à cela est le
-concept de tableau n'existe pas pour la machine sous-jacente, elle ne connait
-que quelques objets de taille fixe et les adresses mémoire. En fait l'existence
-même des tableaux en C n'est qu'un confort qui est créé par le compilateur pour
-vous simplifier la vie lorsque vous faites des manipulations simples qui
-auraient sinon requis d'utiliser des pointeurs ce qui arrive très souvent en
-pratique.
+utiliserais-je des pointeurs en C lorsque les tableaux sont disponibles?".
+
+La réponse à cette question est tout simplement : "Parce que vous n'avez pas le
+choix :-)"
+
+En effet, il y a beaucoup de cas de figures où en C vous êtes contraints
+d'utiliser des pointeurs alors que vous voudriez utiliser des tableaux. La
+raison implicite pour laquelle le C vous force à cela est le concept de tableau
+n'existe pas pour la machine sous-jacente, elle ne connait que quelques objets
+de taille fixe et les adresses mémoire.
+
+En fait l'existence même des tableaux en C n'est qu'un confort créé par le
+compilateur pour vous simplifier la vie lorsque vous faites des manipulations
+simples qui auraient sinon requis d'utiliser des pointeurs, ce qui arrive très
+souvent en pratique.
 
 tl;dr : Les types en C sont de taille (en mémoire) fixe et prédéfinie, mais cela
 empêche de définir des objets abtraits mais très utiles (notamment les chaînes
@@ -102,13 +106,13 @@ int main(int argc, char const *argv[]) {
 
                             argv, argc - 1*
 
-  Note : les "const" signifie au compilateur que le code dans le main n'a pas
+  Note : le "const" signifie au compilateur que le code dans le main n'a pas
   le droit de modifier la valeur de argv (cela n'aurait pas de sens, argv
-  désigne les arguments en ligne de commande donnés par l'utilisateur.
+  désigne les arguments en ligne de commande donnés par l'utilisateur).
 
-  Notez aussi que la char *argv[] comme argument de fontion n'existe pas en C,
-  il ne s'agit que d'une convention définie uniquement pour la fonction main par
-  le compilateur pour vous simplifier la vie.
+  Notez aussi que la char *argv[] comme argument de fontion est équivalent à
+  char **argv, et à part pour le main on préférera souvent la deuxième syntaxe
+  qui reflète mieux ce qui se passe vraiment dans votre programme.
 
   Dans le main, argc désigne le nombre de commandes passées en argument du
   programme (i.e. la taille de argv) et argv est un tableau contenant tous ces
@@ -123,15 +127,15 @@ int main(int argc, char const *argv[]) {
   // La fonction sizeof permet de connaitre la taille d'un objet en mémoire.
   size_t sizea = sizeof(a);
 
-  printf("Taille d'un entier en mémoire %d octets\n", sizeof(a));
+  printf("Taille d'un entier en mémoire %ld octets\n", sizea);
 
   /*
   sizeof est une fonction très pratique qui peut aussi être utilisée
   directement sur un type pour en connaitre la taille (en octets).
   */
-  printf("Taille d'un flottant en mémoire %d octets\n", sizeof(float));
+  printf("Taille d'un flottant en mémoire %ld octets\n", sizeof(float));
 
-  // Déclaration d'un tableau avec des valeurs préremplies
+  // Déclaration d'un tableau avec des valeurs prédéfinies
   int tab[3] = {1, 2, 3};
 
   // Création d'un tableau non initialisé
@@ -152,19 +156,19 @@ int main(int argc, char const *argv[]) {
   sizeof renvoie toujours une taille en octets et pas en nombre d'éléments.
   */
 
-  printf("Taille de tab %d\n", sizeof(tab));
-  printf("Taille de tab_empty %d\n", sizeof(tab_empty));
+  printf("Taille de tab %ld\n", sizeof(tab));
+  printf("Taille de tab_empty %ld\n", sizeof(tab_empty));
 
   // Déclaration d'un pointeur void *
   void *ptr;
 
   // Les pointeurs sont un type en C, et ont une taille fixe en mémoire
-  printf("Taille du pointeur %d\n", sizeof(ptr));
+  printf("Taille du pointeur %ld\n", sizeof(ptr));
 
   /*
   Les pointeurs bruts en C (de type void *) ne sont pas utilisés en tant que
-  tel, souvent on préférera utiliser un pointeur typé en C afin de donner
-  davantage d'information au compilateur sur ce que l'on souhaite faire.
+  tel, souvent on préférera utiliser un pointeur typé afin de donner davantage
+  d'information au compilateur sur ce que l'on souhaite faire.
   */
 
   // Déclaration d'un pointeur qui va vers des entiers.
@@ -194,7 +198,7 @@ int main(int argc, char const *argv[]) {
          intptr[1]);
 
   // Attention cependant, un pointeur n'est pas un tableau, et notamment :
-  printf("sizeof intptr %d\n", sizeof(intptr));
+  printf("sizeof intptr %ld\n", sizeof(intptr));
 
   /*
   Une conséquence importante de cela est qu'il n'est pas possible de retrouver
@@ -212,7 +216,7 @@ int main(int argc, char const *argv[]) {
 
   /*
 
-                              addressof - 1*
+                                addressof - 1*
 
   Une autre syntaxe est également possible pour déclarer un pointeur,
   en utilisant le "&" qui va permettre d'accéder à l'adresse mémoire d'une
@@ -352,7 +356,7 @@ int main(int argc, char const *argv[]) {
     printf("%d\n", good_sum((int *)&tableau_example,
                             sizeof(tableau_example) / sizeof(int)));
   } else {
-    printf("%s\n", "Comment êtes vous arrivés içi ?");
+    printf("%s\n", "Comment êtes-vous arrivés içi ?");
   }
 
   /*
@@ -377,18 +381,18 @@ int main(int argc, char const *argv[]) {
 
 int bad_sum(int *array) {
   // Dans cette fonction on cherche à calculer la somme des éléments dans array.
-  int result = 0;
+
   // La première chose à faire est de savoir combien d'éléments sommer ...
-  printf("sizeof array %d\n", sizeof(array));
+  printf("sizeof array %ld\n", sizeof(array));
 
   /*
-  Le message ne tient pas sur une ligne, donc je le sépare en plusieurs lignes
-  grâce à la syntaxe de substitution du printf.
+  Le message ne tient pas sur une ligne, mais il existe une syntaxe simple en C
+  pour écrire des chaines de caractères sur plusieurs lignes.
   */
-  char *debut_du_message = "C'est la taille en mémoire du pointeur";
-  char *fin_du_message = "et pas la taille en octets du tableau ...";
+  char *msg = "C'est la taille en mémoire du pointeur, "
+              "et pas la taille en octets du tableau ...";
 
-  printf("Oups ...\n%s, %s\n", debut_du_message, fin_du_message);
+  printf("Oups ...\n%s\n", msg);
 
   /*
   En n'ayant que le pointeur vers le tableau, il n'est pas possible d'en
@@ -428,8 +432,8 @@ int oppose(int *array, size_t taille) {
   /*
   Notez que l'on modifie le tableau passé en argument par "effet de bord".
   Je ne détaille pas maintenant pourquoi ce n'est en réalité pas un effet de
-  bord au sens strict, vous pourrez avoir plus de détails là dessus dans le
-  programme sur les états indéfinis (Undefined Behaviors).
+  bord au sens strict, vous pourrez avoir plus de détails là dessus dans un
+  tutoriel ultérieur.
   */
   for (size_t i = 0; i < taille; i++) {
     array[i] *= -1;
@@ -446,15 +450,15 @@ int oppose(int *array, size_t taille) {
 Les pointeurs sont un élément central du C, mais sont (un peu à raison) vu comme
 difficiles à utiliser et peu pratiques en venant d'un autre language. Il est
 vrai qu'un pointeur est moins facile à utiliser qu'une référence (même si la
-différence est asse subtile), mais les pointeurs se rapprochent davantage du
-fonction de la machine sous-jacente. Cela permet de souligner un point important
-concernant le C :
+différence est assez subtile), mais les pointeurs se rapprochent davantage du
+fonctionnement de la machine sous-jacente. Cela permet de souligner un point
+important concernant le C :
 
 Le C n'est pas d'un language de programmation de haut niveau fait pour manipuler
 efficacement et automatiquement des concepts utiles pour un humain (comme le
-sont python, java et par certains aspects le C++). Il s'agit en fait d'un
-language de bas niveau, c'est à dire un language qui permet d'écrire
-automatiquement du code compréhensible par une machine.
+sont python, java et le C++). Il s'agit en fait d'un language de bas niveau,
+c'est à dire un language qui permet d'écrire automatiquement du code
+compréhensible par une machine.
 
 La raison d'être du C (pour ainsi dire) est que si ce type de language
 n'existait pas, nous serions forcés d'écrire du code en assembleur pour faire
@@ -485,9 +489,9 @@ pourtant plus faciles à utiliser pour le programmeur ?
 
 Pourquoi ne pas introduire un système d'erreurs avec interruptions comme en
 python ou en Java ?
-    - Encore une fois ce concept n'existe pas dans la plupart des assembleurs,
-    donc il ne serait pas forcément possible de traduire efficacement du code
-    utilisant de telles exception en assembleur.
+    - Encore une fois ce concept n'est pas naturel en assembleurs, donc il ne
+    serait pas forcément possible de traduire efficacement du code utilisant de
+    telles exception en assembleur.
 
 Pourquoi ne pas laisser le programmeur définir des types de taille variable
 qui représenteront des objets abstraits pour son code ?
@@ -498,17 +502,17 @@ qui représenteront des objets abstraits pour son code ?
 
 Notez que si cela vous intéresse, vous pouvez demander à votre compilateur C de
 vous montrer ce en quoi il compile votre code (le code en assembleur qu'il
-génère). Par exemple, pour gcc la commande à utiliser est :
+génère). Par exemple, pour gcc ou clang la commande à utiliser est :
 
-gcc -S -fverbose-asm -O0 <fichier source>
+cc -S -fverbose-asm -O0 <fichier source>
 
 Et gcc va créer un fichier .S contenant un code en assembleur de votre
 programme. Le flag -S indique que gcc doit produire du code en assembleur, -O0
-signifie à gcc qu'il ne doit pas optimiser le code (sinon vous aurez du mal à
-trouver la correspondance entre ce que vous avez écrit et ce qui est fait
-réellement), -fverbose-asm indique au compilateur qu'il doit commenter le code
-en assembleur avec des informations pour aider à la relecture. Pour d'autres
-compilateurs, cherchez sur internet la commande à passez en argument.
+signifie au compilateur qu'il ne doit pas optimiser le code (sinon vous aurez
+du mal à trouver la correspondance entre ce que vous avez écrit et ce qui est
+fait réellement), -fverbose-asm indique au compilateur qu'il doit commenter le
+code en assembleur avec des informations pour aider à la relecture. Pour
+d'autres compilateurs, cherchez sur internet la commande à passez en argument.
 
 tl;dr : Le C n'est qu'un "framework" pour générer du code en assembleur
 automatiquement et pas un language de programmation au sens où on l'entend
