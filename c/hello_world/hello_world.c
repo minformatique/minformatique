@@ -26,7 +26,7 @@ Contributeurs : Rezal P18
 /*
                       Les directives du préprocesseur - 2**
 
-Un programme en C commence toujours par des instruction qui commencent par un #
+Un programme en C commence toujours par des instruction qui précédées par un #
 Ce sont des instructions pour le préprocesseur (un morceau du compilateur) pour
 lui dire de faire certaines actions.
 
@@ -40,8 +40,8 @@ faut remplacer foo par ce qui vous intéresse):
 #if : Utilisé pour faire de la compilation conditionnelle, le code qui se trouve
       entre ce #if et le #endif associé ne sera compilé que si la condition dans
       le if est vérifié. Un cas d'usage classique sert à faire du cross
-      plateforme, par exemple : si on compile pour windows, on fait cela, sinon
-      on fait autre chose.
+      plateforme, par exemple : "si on compile pour windows, on fait cela, sinon
+      on fait autre chose".
 
 #ifdef foo: raccourci pour #if defined(foo)
 
@@ -69,17 +69,17 @@ elle qui contient printf, l'une des fonctions les plus célèbres du C.
 #include <stdio.h>
 
 #elif defined(__WIN32)
-// Note that #ifdef exists, but not #elifdef
+// Remarquez que #ifdef exists, mais pas #elifdef
 
 /*
 
                                 Windows.h - 1*
 
-Windows a été écrit en C++ et pas vraiment pensé pour le C (contrairement à Unix
-et Linux). Par suite le C n'y est pas aussi bien géré, en particulier :
+Windows a été écrit en C/C++ et pas vraiment pensé pour le C (contrairement à
+Unix et Linux). Par suite le C n'y est pas aussi bien géré, en particulier :
  - Beaucoup d'API de Windows sont faites pour être utilisées en C++.
  - Presque toutes les librairies standards du C sous linux on été fondues en une
-    seule grosse librairie appellée que l'on peut utiliser grâce à windows.h
+    seule grosse librairie que l'on peut utiliser grâce à windows.h
 */
 #include <windows.h>
 
@@ -106,15 +106,15 @@ Les librairies C se trouvent en fait dans d'autres fichiers, souvent appellés
 sous linux foo.so et sous windows foo.dll . Dans la plupart des langages
 modernes le besoin de ces fichiers headers a disparu (ils sont souvent fusionnés
 avec la librairie elle même). Cela étant le C n'est pas un langage moderne (du
-tout), d'où cette séparation entre librairie et header (à laquelle on se fait
-très vite).
+tout), d'où cette séparation entre librairie et header, à laquelle on se fait
+très vite.
 
 Pour la petite histoire, une des raisons qui justifie l'existence de ces headers
 est un découplage entre interface et implémentation. Deux librairies peuvent
 utiliser des implémentations complètement différentes d'une même fonction,
 lorsque vous appellez depuis votre code en C cela ne fait pas de différence
 puisque l'interface à laquelle vous les appelez (le fichier header) est la même.
-Notez cependant que dan les langages modernes l'interface et l'implémentation
+Notez cependant que dans les langages modernes l'interface et l'implémentation
 sont effectivement découplés même sans fichiers header.
 
 tl;dr : les fichiers headers.h sont un artefact d'un époque depuis longtemps
@@ -236,7 +236,7 @@ int main(int argc, char *argv[]) {
   seront remplacés par des valeurs qui se trouvent dans le "..." .
 
   En fait printf est un type de fonction très rare en C (et très difficile à
-  écrire), c'est une fonction variadique, c'est à dire une fonction avec un
+  écrire) : c'est une fonction variadique, c'est à dire une fonction avec un
   nombre d'arguments variables (il n'est pas important de retenir cela, je le
   met juste içi pour information). L'implémentation de la fonction printf est
   très complexe mais son utilisation est très facile.
@@ -244,13 +244,15 @@ int main(int argc, char *argv[]) {
   Dans la chaine de caractères format :
     %s sera remplacée par une chaîne de caractères,
     %d sera remplacé par un type entier (signé ou non) plus petit que 4 octets,
-          notamment int et size_t;
+          notamment int et uint;
     %f sera remplacé par un type flottant (signé ou non) plus petit que 4
-  octets, notamment float %ld sera remplacé par un type entier (signé ou non)
-  plus grand que 4 octets mais plus peit que 8, notamment long int; %lf sera
-  remplacé par un type flottant (signé ou non) plus grand que 4 octets mais plus
-  peit que 8, notamment double; \n désigne un retour à la ligne (comme dans
-  n'importe quelle chaîne de caractères)
+          octets, notamment float;
+    %ld sera remplacé par un type entier (signé ou non) plus grand que 4
+          octets mais plus petit que 8, notamment long int et size_t;
+    %lf sera remplacé par un type flottant (signé ou non) plus grand que 4
+          octets mais plus petit que 8, notamment double;
+    \n désigne un retour à la ligne (comme dans n'importe quelle chaîne de
+          caractères)
 
   Pour savoir quel argument remplacer à quel endroit, il est possible de leur
   donner des numéros (cf la documentation de printf, je n'ai pas envie de
@@ -327,7 +329,8 @@ d = add(a,b);
 lors de l'execution c'est la valeur de a et la valeur de b qui seront
 accessibles dans la fonction (donc on ne pourrait pas modifier leur valeur
 depuis l'intérieur de la fonction). De même, d ne deviendrait pas égal à la
-variale locale result, mais simplement à la valeur de result.
+variale locale result, mais simplement à la valeur de result . C'est comme si on
+copiait la valeur de result dans d.
 
 Cette notion de pass by value est certainement un peu abstraite pour l'instant,
 mais au moment de parler de pointeurs elle prendra toute son importance.
