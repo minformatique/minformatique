@@ -36,10 +36,10 @@
 # alias := <ce par quoi l'alias sera remplacé>
 #
 # Pour utiliser l'alias dans la suite du fichier il suffit alors d'écrire $(alias)
-SOURCES 	:= calculatrice.c calcul.c expression.c symbole.c
-HEADER		:= calculatrice.h
-LIBRAIRIE := libPile.so pile.h
-CC				:= gcc
+SOURCES 		:= calculatrice.c calcul.c expression.c symbole.c
+HEADER			:= calculatrice.h
+LIBRAIRIE 	:= libPile.so pile.h
+CC					:= cc
 
 # Les arguments de compilation que nous utilisons sont :
 #  -Wall : "Warnings All", qui, contrairement à ce que son nom suggère, n'active
@@ -81,18 +81,22 @@ OUTPUT		:= calculatrice.elf
 # <nom de la règle> : <dépendances>
 # 	<commandes>
 # Par exemple pour compiler la règle "calculatrice" il faut taper "make
-# calculatrice" dans la ligne de commande.
-calculatrice : $(SOURCES) $(LIBRAIRIE) $(HEADER)
-	$(MAKE) lib
+# calculatrice.elf" dans la ligne de commande.
+$(OUTPUT) : $(SOURCES) $(LIBRAIRIE) $(HEADER)
 	$(CC) $(FLAGS) $(SOURCES) -o $(OUTPUT)
 
-# Vous remarquerez que "make calculatrice" fait appel à une autre commande make,
-# nommée "make lib". Cela signifie juste qu'au moment de compiler la calculatrice
-# je demande de compiler la librairie (ici pile) si cela n'a pas déjà été fait.
+# Vous remarquerez que "make calculatrice.elf" a besoin que la librairie pile
+# ait déjà été compilée. Cela est géré automatiquement par make : en effet nous
+# avons défini plus bas une règle permettant de compiler libPile.so et pile.h
+# s'il ne sont pas déjà présents (celle qui commence par $(LIBRAIRIE)). Or dans
+# les dépendances de notre règle $(OUTPUT) nous avons noté $(LIBRAIRIE), donc
+# make comprend lorsque nous lançons "make calculatrice.elf" que si libPile.so
+# et pile.h ne sont pas présents il doit les compiler lui-même.
+
 # Pour compiler la librairie pile, rien de plus simple : on lance la commande
 # "make lib" dans le dossier pile (c'est le sens de make -C pile) avec l'argument
 # lib. Ce n'est pas visible ici, le makefile que l'on trouve dans le dossier pile
 # contient une règle qui s'appelle lib et qui compile la librairie pile (et la
 # copie dans le dossier calculatrice).
-lib :
+$(LIBRAIRIE) :
 	$(MAKE) -C pile lib

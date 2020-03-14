@@ -569,7 +569,7 @@ int lancer_machine(Machine *instance, int cout) {
   je ne crois pas avoir déjà utilisé de boucles for dans tous les tutoriels donc
   comme cela j'aurais montré la syntaxe au moins une fois.
   */
-  for (size_t i = 0; i < cout; i++) {
+  for (int i = 0; i < cout; i++) {
 
     if (instance->etat == ARRET) {
       error_message = "Vous ne pouvez pas lancer une machine à l'arrêt, "
@@ -599,7 +599,7 @@ int lancer_machine(Machine *instance, int cout) {
         */
       case MARCHE:
         instance->energie--; // i.e. -= 1;
-        printf("%ld - %s\n", i, "La machine produit du travail");
+        printf("%d - %s\n", i, "La machine produit du travail");
         break;
       case ARRET:
         /*
@@ -624,14 +624,16 @@ int eteindre_machine(Machine *instance) {
     return_code = 0; // Pas une erreur, on a juste un warning.
     break;
   case MARCHE:
-    error_message = "Il est dangeureux d'essayer d'éteindre une machine "
+    error_message = "Il est dangereux d'essayer d'éteindre une machine "
                     "en marche";
     fprintf(stderr, "%s\n", error_message);
     return_code = 1;
+    break;
   case REPOS:
     instance->etat = ARRET;
     printf("%s\n", "La machine s'éteint, "
                    "merci de prêter attention aux consignes de sécurité ;-)");
+    break;
   }
   return return_code;
 }

@@ -332,7 +332,7 @@ int main(int argc, char const *argv[]) {
 
   message1 = "Le programme va rester bloquer ici tant";
   message2 = "que vous ne taperez pas de message !";
-  char newline;
+
   printf("%s %s\n--->", message1, message2);
   scanf("%s", big_buffer);
   printf("Votre message : %s\n", big_buffer);
@@ -712,6 +712,7 @@ int tutoriel_wait(char *message) {
   printf("\n%s\n%s", message, "(Appuyez sur ENTER pour continuer)");
   getchar();
   printf("%s\n", "");
+  return 0;
 }
 
 /*
