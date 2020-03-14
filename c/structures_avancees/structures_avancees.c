@@ -436,7 +436,7 @@ int mauvais_produire_machine(Machine instance, char *identifiant) {
   terminaison à la fin de l'identifiant (cf le tutoriel sur la librairie
   standard).
   */
-  instance.identifiant[8] = 0;
+  instance.identifiant[7] = 0;
   return 0;
 }
 
@@ -467,7 +467,7 @@ int produire_machine(Machine *instance, char *identifiant) {
   terminaison à la fin de l'identifiant (cf le tutoriel sur la librairie
   standard).
   */
-  instance->identifiant[8] = 0;
+  instance->identifiant[7] = 0;
   return 0;
 }
 
@@ -633,6 +633,7 @@ int eteindre_machine(Machine *instance) {
     instance->etat = ARRET;
     printf("%s\n", "La machine s'éteint, "
                    "merci de prêter attention aux consignes de sécurité ;-)");
+    return_code = 0;
     break;
   }
   return return_code;
