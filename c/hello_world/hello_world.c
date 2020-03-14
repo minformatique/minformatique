@@ -55,9 +55,6 @@ faut remplacer foo par ce qui vous intéresse):
 ################################################################################
 */
 
-#ifdef __linux__
-// i.e. si on est sous linux
-
 /*
 
                                   stdio.h - 1*
@@ -67,23 +64,6 @@ En pratique vous en aurez besoin pour presque tous vos programmes puisque c'est
 elle qui contient printf, l'une des fonctions les plus célèbres du C.
 */
 #include <stdio.h>
-
-#elif defined(__WIN32)
-// Remarquez que #ifdef exists, mais pas #elifdef
-
-/*
-
-                                Windows.h - 1*
-
-Windows a été écrit en C/C++ et pas vraiment pensé pour le C (contrairement à
-Unix et Linux). Par suite le C n'y est pas aussi bien géré, en particulier :
- - Beaucoup d'API de Windows sont faites pour être utilisées en C++.
- - Presque toutes les librairies standards du C sous linux on été fondues en une
-    seule grosse librairie que l'on peut utiliser grâce à windows.h
-*/
-#include <windows.h>
-
-#endif
 
 /*
 
