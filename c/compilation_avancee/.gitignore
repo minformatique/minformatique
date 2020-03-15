@@ -1,4 +1,5 @@
 libPile.so
 ./pile.h
-pile/pile.o
-pile/unit_test.elf
+*.ilk
+*.pdb
+*.exp

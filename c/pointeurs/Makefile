@@ -10,3 +10,9 @@ linux: pointeurs.elf
 
 windows: pointeurs.exe
 	echo "Compilation de pointeurs.exe achevée."
+
+clean:
+	# Suppression des fichiers Windows
+	rm -f pointeurs.exe
+	# Suppression des fichiers UNIX
+	rm -f pointeurs.elf

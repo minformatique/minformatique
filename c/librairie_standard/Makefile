@@ -9,3 +9,11 @@ linux: librairie_standard.elf
 
 windows: librairie_standard.exe
 	echo "Compilation de libraire_standard.exe achevée."
+
+clean:
+	# Suppression des fichiers inutiles
+	rm -f first_lines.txt copy_source.txt
+	# Suppression des fichiers Windows
+	rm -f librairie_standard.exe
+	# Suppression des fichiers UNIX
+	rm -f librairie_standard.elf

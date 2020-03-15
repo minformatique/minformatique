@@ -4,8 +4,8 @@ unit_test.elf : pile.c pile.h unit_test.c
 		cc -o unit_test.elf pile.c unit_test.c
 
 unit_test.exe : pile.c pile.h unit_test.c
-# Pour tester les méthodes définies dans la librairie pile on commence par
-# compiler notre librairie avec un main écrit dans un autre fichier (unit_test.c)
+# Notez que nous n'utilisons pas les fichiers pile_w.c et pile_w.h, qui comprennent
+# des décorateurs spécifiques utilisés seulement pour la compilation en une dll.
 		clang.exe -o unit_test.exe pile.c unit_test.c
 
 linux: unit_test.elf
@@ -30,10 +30,10 @@ liblinux : pile.c pile.h
 # 1 - D'abord le preprocess, pendant cette étape le préprocesseur résout toutes
 # les instructions qui lui sont destinées, par exemple #include, #ifdef etc...
 #
-#	2 - La compilation à proprement parlé, pendant cette étape le compilateur va
-#	parser et comprendre votre code, l'optimiser et renvoyer sa représentation en
-#	assembleur (vous vous souvenez peut-être que dans le tutoriel sur les
-#	pointeurs on montrait à la fin de comment voir ce code en assembleur).
+# 2 - La compilation à proprement parlé, pendant cette étape le compilateur va
+# parser et comprendre votre code, l'optimiser et renvoyer sa représentation en
+# assembleur (vous vous souvenez peut-être que dans le tutoriel sur les
+# pointeurs on montrait à la fin de comment voir ce code en assembleur).
 #
 # 3 - Suit l'assemblage du code, pendant lequel l'assembleur va traduire le code
 # assembleur "lisible par un humain" en sa représentation machine, stockée dans
@@ -101,14 +101,74 @@ liblinux : pile.c pile.h
 # dans le dossier parent.
 		cp libPile.so pile.h ../
 
-# La même chose sous Windows. Créer une dll sous windows n'est pas très complexe,
-# en revanche par rapport à UNIX vous devez en plus créer une librairie statique
-# (.lib) qui permettra à votre code de savoir comment utiliser les fonctions
-# définies dans votre dll. Ce wrapper peut être généré automatiquement par clang,
-# moyennant une commande qui n'a rien à envier à son équivalent UNIX.
-libwindows: pile.c pile.h
-		clang.exe -c -o pile.o pile_w.c
-		clang.exe -shared -o pile.dll pile.o
-		# implib.exe /s pile.lib pile.dll
-		chmod -x pile.dll
-		cp pile.dll pile.lib pile.h ../
+# 
+#			Librairies dynamiques et dll - 3***
+#
+# Créer une dll sous windows n'est pas très complexe, # en revanche par rapport
+# à UNIX vous devez en plus créer une librairie statique (.lib) qui permettra à
+# votre code de savoir comment utiliser les fonctions définies dans votre dll.
+# Ce wrapper peut être généré automatiquement par clang, (même si cela n'est pas
+# mentionné dans la documentation) en ajoutant les bons décorateur (montrés dans
+# pile_w.h) à vos fonctions.
+#
+# Pour explique cette diférence, je dois rapidement expliquer comment fonctionnent
+# les librairies dynamiques en C. Je ne suis pas un expert et le sujet est assez
+# compliqué, mais en gros dans une librairie en C vous trouverez au moins deux
+# parties : une table de symbole et le corps de la librairie.
+#
+# Le corps de la librairie contient l'implémentation de vos fonctions, c'est à dire
+# le code en binaire à exécuter pour utiliser les fonctions.
+#
+# La table des symboles contient une liste de tuples décrivant vos fonctions. Dans
+# ces tuples vous trouverez au moins le nom de la fonction en question et l'adresse
+# dans le corps de la librairie où l'implémentation de la fonction se trouve.
+#
+# Ainsi, lorsqu'un exécutable souhaite utiliser une fonction définie dans une
+# librairie dynamique, il lui suffit de regarder dans la table des symboles à quelle
+# adresse se trouve la fonction en question puis il peut la charger. Les choses sont
+# évidemment plus complexes en pratiques, mais c'est tout ce que nous avons besoin
+# de savoir pour l'instant.
+#
+# Sachant tout cela, la différence principale entre Windows et UNIX est que :
+# - Sous UNIX, par défaut les fonctions définies dans la librairie (dans les .c
+#   et .h) SONT AJOUTEES à la table des symboles de la librairie dynamique obtenue.
+# - Sous Windows, par défaut les fonctions définies dans la librairie NE SONT PAS
+#   AJOUTEES à la table des symboles de la librairie dynamique obtenue.
+#
+# En ommettant mon avis personnel sur la question, cela signifie que sous Windows
+# vous devez explicitement marquer les fonctions que vous souhaitez exporter dans
+# la table des symboles de votre libraire dynamique. Cela se fait en précédant la
+# définition de votre fonction par un __declspec(dllexport).
+#
+# Une autre différence importante est la façon dont les librairies dynamiques sont
+# cherchées au moment de l'exécution. UNIX utilise un outil nommé ld qui ira chercher
+# votre librairie dynamique au moment de l'exécution (voire run.sh dans le dossier
+# parent). Au contraire Windows va créer au moment où vous compilez votre dll une
+# librairie statique (.lib) qui va se charger "d'enrober" (to wrap en anglais) les
+# appels à votre dll.
+#
+# Ce sont deux approches qui ont chacune leurs avantages et leurs inconvénients, il
+# est juste important de savoir que les deux OS ont des approches différentes.
+libwindows: pile_w.c pile_w.h
+	# Comme sous UNIX on commence par créer un fichier objet.
+	clang.exe -c -o pile.o pile_w.c
+	# On édite les liens de notre fichier objet pour en faire un dll.
+	# Vous remarquerez à la compilation que clang va automatiquement
+	# générer des fichiers .lib et .exp . En fait le compilateur
+	# détecte le décorateur que nous avons utilisé. C'est une bonne idée
+	# dans le fond, mais ce qui m'a fait perdre des heures ici est que
+	# si vous ne mettez pas les décorateurs dans votre code source clang
+	# ne va pas mentionner ces fichiers .lib et .exp dont vous avez
+	# besoin, et donc vous n'avez aucun moyen de savoir que clang peut
+	# vous les fournir.
+	clang.exe -shared -o pile.dll pile.o
+	# Remarquez que le header que nous exportons est celui sans les
+	# décorateurs, qui sont utiles uniquement au moment de la création de
+	# la dll, le reste du temps ils sont plutôt génants.
+	cp pile.dll pile.lib pile.h ../
+
+clean:
+	# Suppression des fichiers Windows
+	rm -f pile.o pile.dll pile.exp pile.lib unit_test.exe
+	# Suppression des fichiers UNIX
+	rm -f pile.o libPile.so unit_test.elf

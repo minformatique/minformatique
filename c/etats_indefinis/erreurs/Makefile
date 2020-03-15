@@ -9,3 +9,9 @@ linux: erreurs.elf
 
 windows: erreurs.exe
 	echo "Compilation de erreurs.exe achevée."
+
+clean:
+	# Suppression des fichiers Windows
+	rm -f erreurs.exe
+	# Suppression des fichiers UNIX
+	rm -f erreurs.elf

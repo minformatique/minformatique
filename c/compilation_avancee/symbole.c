@@ -470,7 +470,12 @@ int next_nb(float *nombre) {
   */
   if (return_value == 0) {
     // Note : nombre est déjà un pointeur.
+    // Petit exemple de compilation conditionnelle entre linux et Windows
+#ifdef _WIN32
+    int sscanf_status = sscanf_s(float_char_buffer, "%f", nombre);
+#else
     int sscanf_status = sscanf(float_char_buffer, "%f", nombre);
+#endif
     /*
     Il nous faut vérifier que sscanf a bien réussi à faire son travail, pour
     cela on utilise le code d'erreur de sscanf (expliqué dans la documentation)

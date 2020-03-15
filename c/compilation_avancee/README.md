@@ -19,6 +19,10 @@ précédence d'opérateurs) parenthesée.
 Notez que cette partie du tutoriel est globalement complexe, avec quelques
 éléments 2** mais le gros est plutôt 3*** voire 4****
 
+Notez qu'une fois le projet compilé, sous UNIX je vous conseille de ne pas lancer
+directement l'exécutable obtenu mais d'utiliser run.sh (vous pouvez lire run.sh
+pour comprendre pourquoi. Sous Windows en revanche vous pouvez utiliser
+l'exécutable directement.
 
 #                                Parcours
 

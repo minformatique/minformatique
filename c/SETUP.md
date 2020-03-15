@@ -134,6 +134,11 @@ est disponible sur votre plateforme. make peut auss trouver seul comment
 compiler des projets simples en C, et son usage sera détaillé pendant les
 tutoriels.
 
+<h1>IMPORTANT</h1>
+Pour ceux qui suivent ce tutoriel sous Windows, je suppose en permanence que
+vous travaillez en permanence depuis l'invite de commande de git (i.e. git bash).
+Si ce n'est pas le cas certains Makefile (tous ?) risquent de mal se comporter.
+
 # 6 - Debugger
 
 En plus de cela vous aurez surement besoin d'outils de débuggages afin de

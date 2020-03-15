@@ -11,3 +11,9 @@ linux: hello_world.elf
 
 windows: hello_world.exe
 	echo "Compilation de hello_world.exe achevée."
+
+clean:
+	# Suppression des fichiers Windows
+	rm -f hello_world.elf
+	# Suppression des fichiers UNIX
+	rm -f hello_world.exe

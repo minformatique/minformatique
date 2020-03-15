@@ -33,6 +33,7 @@ notions sont abordées dans les fichiers, merci de votre indulgence.
 - dépendances (inversions de, mention) : compilation_avancee/calculatrice.c, ligne 359, 3***
 - dépendances (inversions de) : compilation_avancee/calculatrice.h, ligne 19, 3***
 - déréference (opérateur de) : structures_avancees/structures_avancees.c , ligne 468, 1*
+- dll (compilation de) : compilation_avancee/pile/Makefile, ligne 105, 3***
 - dynamique (librairie / objet) : compilation_avancee/pile/Makefile, ligne 76, 4****
 
 ## E
@@ -135,10 +136,12 @@ notions sont abordées dans les fichiers, merci de votre indulgence.
 - stateless (mention) : structures_avancees/structures_avancees.c, ligne 660, 2**
 - stdio.h (introduction) : hello_world/hello_world.c, ligne 65, 1*
 - struct : structures_avancees/structures_avancees.c, ligne 104, 1*
+- symboles (table de) : compilation_avancee/pile/Makefil, ligne 105, 3***
 - system (call) : librairie_standard/librairie_standard.c, ligne 554, 1*
 
 ## T
 - tableaux : pointeurs/pointeurs.c, ligne 68, 1*
+- table (de symboles) : compilation_avancee/pile/Makefile, ligne 105, 3***
 - test (integration, mention) : compilation_avancee/pile/unit_test.c, ligne 49, 3***
 - test (unit) : compilation_avancee/pile/unit_test.c, ligne 49, 3***
 - texte (manipulation de) : librairie_standard/librairie_standard.c, ligne 75, 2**

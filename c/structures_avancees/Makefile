@@ -9,3 +9,9 @@ linux: structures_avancees.elf
 
 windows: structures_avancees.exe
 	echo "Compilation de structures_avancees.exe achevée."
+
+clean:
+	# Suppression des fichiers Windows
+	rm -f structures_avancees.exe
+	# Suppression des fichiers UNIX
+	rm -f structures_avancees.elf

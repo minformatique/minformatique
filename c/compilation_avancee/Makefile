@@ -38,7 +38,7 @@
 # Pour utiliser l'alias dans la suite du fichier il suffit alors d'écrire $(alias)
 SOURCES_UNIX 	:= calculatrice.c calcul.c expression.c symbole.c
 HEADER		:= calculatrice.h
-LIBRAIRIE_UNIX 	:= libPile.so pile.h
+LIBRAIRIE_UNIX 	:= libPile.so
 CC_UNIX		:= cc
 
 # On dédouble tout pour windows. Comme vous pouvez le reamrque, écrire de tels
@@ -54,7 +54,7 @@ CC_UNIX		:= cc
 # et pas très clairs.
 SOURCES_WIN 	:= calculatrice.c calcul.c expression.c symbole.c
 HEADER		:= calculatrice.h
-LIBRAIRIE_WIN 	:= pile.dll pile.h
+LIBRAIRIE_WIN 	:= pile.dll
 CC_WIN		:= clang.exe
 
 # Les arguments de compilation que nous utilisons sont :
@@ -92,6 +92,11 @@ CC_WIN		:= clang.exe
 #  librairie est nommée "libPile.dll".
 
 FLAGS_UNIX	:= -Wall -g -L ./ -lPile
+# Ce n'est pas évident en regardant la ligne qui suit, mais le fichier désigné par
+# -lpile est pile.lib et non pas pile.dll. Cela est expliqué dans le Makefile dans
+#  le dossier pile. Ce qu'il faut retenir est juste que pour utiliser une dll dans
+#  vos programmes en C vous devez compiler avec une librairie statique .lib qui
+#  sert de wrapper ("d'enrobage") à la dll.
 FLAGS_WIN	:= -Wall -g -L ./ -lpile
 OUTPUT_UNIX	:= calculatrice.elf
 OUTPUT_WIN	:= calculatrice.exe
@@ -136,3 +141,9 @@ linux: $(OUTPUT_UNIX)
 
 windows: $(OUTPUT_WIN) 
 	echo "Compilation de $(OUTPUT_WIN) achevée."
+
+clean:
+	# Suppression des fichiers windows
+	rm -f calculatrice.exe calculatrice.pdb calculatrice.ilk pile.dll pile.lib pile.h
+	# Suppression des fichiers UNIX
+	rm -f calculatrice.elf libPile.so pile.h
