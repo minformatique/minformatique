@@ -1,12 +1,22 @@
-test : pile.c pile.h unit_test.c
+unit_test.elf : pile.c pile.h unit_test.c
 # Pour tester les méthodes définies dans la librairie pile on commence par
 # compiler notre librairie avec un main écrit dans un autre fichier (unit_test.c)
 		cc -o unit_test.elf pile.c unit_test.c
 
+unit_test.exe : pile.c pile.h unit_test.c
+# Pour tester les méthodes définies dans la librairie pile on commence par
+# compiler notre librairie avec un main écrit dans un autre fichier (unit_test.c)
+		clang.exe -o unit_test.exe pile.c unit_test.c
 
-lib : pile.c pile.h
+linux: unit_test.elf
+	echo "Compilation de unit_test.elf achevée."
+
+windows: unit_test.exe
+	echo "Compilation de unit_test.exe achevée."
+
+liblinux : pile.c pile.h
 #
-#													La compilation - 4****
+#				La compilation - 4****
 #
 # Pour compiler une librairie dynamique en C (c'est souvent ce dont vous avez
 # besoin la plupart du temps) il faut passer par une représentation objet de
@@ -90,3 +100,14 @@ lib : pile.c pile.h
 # Pour la suite du tutoriel on copie la librairie produite et son fichier header
 # dans le dossier parent.
 		cp libPile.so pile.h ../
+
+# La même chose sous Windows. Créer une dll sous windows n'est pas très complexe,
+# en revanche par rapport à UNIX vous devez en plus créer une librairie statique
+# (.lib) qui permettra à votre code de savoir comment utiliser les fonctions
+# définies dans votre dll. Ce wrapper peut être généré automatiquement par clang,
+# moyennant une commande qui n'a rien à envier à son équivalent UNIX.
+libwindows: pile.c pile.h
+		clang.exe -c -o pile.o pile.c
+		clang.exe -shared -o pile.dll pile.o -Wl,--out-implib,libPile.lib
+		chmod -x pile.dll
+		cp pile.dll libPile.lib pile.h ../

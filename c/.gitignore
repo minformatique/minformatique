@@ -1,2 +1,6 @@
 *.elf
 *.exe
+*.o
+*.dll
+*.lib
+*.swp

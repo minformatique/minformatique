@@ -36,10 +36,26 @@
 # alias := <ce par quoi l'alias sera remplacé>
 #
 # Pour utiliser l'alias dans la suite du fichier il suffit alors d'écrire $(alias)
-SOURCES 		:= calculatrice.c calcul.c expression.c symbole.c
-HEADER			:= calculatrice.h
-LIBRAIRIE 	:= libPile.so pile.h
-CC					:= cc
+SOURCES_UNIX 	:= calculatrice.c calcul.c expression.c symbole.c
+HEADER		:= calculatrice.h
+LIBRAIRIE_UNIX 	:= libPile.so pile.h
+CC_UNIX		:= cc
+
+# On dédouble tout pour windows. Comme vous pouvez le reamrque, écrire de tels
+# Makefile est assez pénible, c'est pourquoi on a inventé l'outil autoconf. Si
+# vous avez déjà compilé des projets open-source, vous savez sans doute que la
+# marche à suivre est : 
+# >> ./configure
+# >> make
+# >> make install
+#
+# Le "./configure" est géré par un outil nommé autoconf, qui va générer le Makefile
+# qui convient à vos besoin, et donc éviter d'avoir comme ici des Makefile redondants
+# et pas très clairs.
+SOURCES_WIN 	:= calculatrice.c calcul.c expression.c symbole.c
+HEADER		:= calculatrice.h
+LIBRAIRIE_WIN 	:= pile.dll pile.h
+CC_WIN		:= clang.exe
 
 # Les arguments de compilation que nous utilisons sont :
 #  -Wall : "Warnings All", qui, contrairement à ce que son nom suggère, n'active
@@ -72,18 +88,28 @@ CC					:= cc
 #  besoin se nomme libPile (si elle s'appellait libfoo.so on aurait mis -lfoo).
 #  Le compilateur va alors chercher la librairie nommé "libPile.so" dans tous les
 #  emplacements qu'il connait (i.e. les emplacements classiques plus ceux que vous
-#  avez passé avec -L)
+#  avez passé avec -L). Sous windows on applique la même logique sauf que la
+#  librairie est nommée "libPile.dll".
 
-FLAGS			:= -Wall -g -L ./ -lPile
-OUTPUT		:= calculatrice.elf
+FLAGS_UNIX	:= -Wall -g -L ./ -lPile
+FLAGS_WIN	:= -Wall -g ./libPile.dll
+OUTPUT_UNIX	:= calculatrice.elf
+OUTPUT_WIN	:= calculatrice.exe
 
 # La syntaxe d'une commande make est :
 # <nom de la règle> : <dépendances>
 # 	<commandes>
 # Par exemple pour compiler la règle "calculatrice" il faut taper "make
 # calculatrice.elf" dans la ligne de commande.
-$(OUTPUT) : $(SOURCES) $(LIBRAIRIE) $(HEADER)
-	$(CC) $(FLAGS) $(SOURCES) -o $(OUTPUT)
+$(OUTPUT_UNIX) : $(SOURCES_UNIX) $(LIBRAIRIE_UNIX) $(HEADER)
+	$(CC_UNIX) $(FLAGS_UNIX) $(SOURCES_UNIX) -o $(OUTPUT_UNIX)
+
+# idem sous windows, où il faudrait taper "make calculatrice.exe".
+$(OUTPUT_WIN) : $(SOURCES_WIN) $(LIBRAIRIE_WIN) $(HEADER)
+	$(CC_WIN) $(FLAGS_WIN) $(SOURCES_WIN) -o $(OUTPUT_WIN)
+
+# (NOTE) Dans le paragraphe qui suit j'ai abrégé les noms pour que le texte soit
+# plus lisible, mais je ne pense pas que cela gènera votre compréhension.
 
 # Vous remarquerez que "make calculatrice.elf" a besoin que la librairie pile
 # ait déjà été compilée. Cela est géré automatiquement par make : en effet nous
@@ -98,5 +124,15 @@ $(OUTPUT) : $(SOURCES) $(LIBRAIRIE) $(HEADER)
 # lib. Ce n'est pas visible ici, le makefile que l'on trouve dans le dossier pile
 # contient une règle qui s'appelle lib et qui compile la librairie pile (et la
 # copie dans le dossier calculatrice).
-$(LIBRAIRIE) :
-	$(MAKE) -C pile lib
+$(LIBRAIRIE_UNIX) :
+	$(MAKE) -C pile liblinux
+
+# idem sous windows
+$(LIBRAIRIE_WIN) :
+	"$(MAKE)" -C pile libwindows
+
+linux: $(OUTPUT_UNIX)
+	echo "Compilation de $(OUTPUT_UNIX) achevée."
+
+windows: $(OUTPUT_WIN)
+	echo "Compilation de $(OUTPUT_WIN) achevée."
