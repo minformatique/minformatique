@@ -134,5 +134,5 @@ $(LIBRAIRIE_WIN) :
 linux: $(OUTPUT_UNIX)
 	echo "Compilation de $(OUTPUT_UNIX) achevée."
 
-windows: $(OUTPUT_WIN)
-	echo "Compilation de $(OUTPUT_WIN) achevée."
+windows: 
+	echo "Pas de support de Windows pour l'instant."
