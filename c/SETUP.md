@@ -19,7 +19,7 @@ du code, la compilation et le débuggage ?
 Pour le bien-être de votre santé mentale je vous reccomande globalement
 d'utiliser un éditeur de code avec un compilateur en ligne de commande. Cela
 peut sembler austère au début, mais le problème des IDE est que vous ne pouvez
-pas tout faire depuis un interface graphique, et si vous êtes habitués à vous
+pas tout faire depuis un interface graphique. Si vous êtes trop habitués à vous
 appuyer sur un IDE vous avez toutes les chances qu'un jour où vous vous lancerez
 dans un projet plus complexe votre IDE finisse par échouer avec un ravissant
 message du goût de "dependancy make build failed, toolchain clang-armv7 is not
@@ -50,7 +50,9 @@ toutefois pour rester dans les sentiers battus :
  ligne si vous avez une question sur son utilisation. Attention cependant à
  n'installer que les modules qui vous intéressent, Visual Studio peut rapidement
  devenir très gourmand en espace disque (~100GB pour une installation de tous
- les modules possibles). Visual Studio n'est pas open-source.
+ les modules possibles). Visual Studio n'est pas open-source, et certaines
+ fonctionnalités de développement sous Windows ne sont accessibles qu'avec Visual
+ Studio.
 
 Il existe beaucoup d'autres IDE sur le marché, faites vos recherches si vous
 voulez en utiliser un. Encore une fois je vous recommande de plutôt utiliser la
@@ -62,8 +64,8 @@ Même si j'ai recommandé l'usage d'éditeurs de code en général, il m'est
 difficile de vous en recommander un en particulier parce que la plupart sont
 finalement assez décevants. Je ne vais pas les décrire en détail car je n'ai
 rien d'interessant (ou plutôt rien qui ne soit politisé) à dire dessus, je me
-contente de lister leurs noms pour que vous puissiez en un qui vous plaise sur
-internet (l'ordre est un peu arbitraire):
+contente de lister leurs noms pour que vous puissiez en choisir un qui vous
+plaise sur internet (l'ordre est un peu arbitraire):
 
  - Visual Studio Code;
  - Atom;
@@ -73,16 +75,16 @@ internet (l'ordre est un peu arbitraire):
  - evim ou gvim (interface graphique de vim)
 
 Faites vous votre opinion, mais vous vous rendrez vite compte qu'il est facile
-de passer de l'un à l'autre sans grande difficulté contrairement aux IDE, donc
-vous ne vous enfermez pas en faisant un choix plutôt qu'un autre.
+de passer de l'un à l'autre (contrairement aux IDE), donc vous ne vous enfermez
+pas en faisant un choix plutôt qu'un autre.
 
 # 4 - Compilateur
 
 Pour travailler en ligne de commande, le premier outil dont vous aurez besoin
 est évidemment un compilateur. En effet le C est un langage compilé, c'est à
-dire que votre code sera compilé en un fichier exécutable que vous pourrez par
-la suite exécuter. Il existe plusieurs compilateurs C mais les deux principaux
-sont de loin :
+dire que votre code sera compilé en un fichier binaire que vous pourrez par la
+suite exécuter. Il existe plusieurs compilateurs C mais les principaux sont de
+loin :
 
  - gcc ("Gnu C Collection") : le compilateur C utilisé massivement dans le monde
  de l'open-source. Il s'agit sans doute de l'un des projets les plus importants
@@ -126,7 +128,7 @@ Suivant la plateforme sur laquelle vous travaillez l'un ou l'autre pourra être
 un meilleur choix :
 
  - sous linux je vous recommande gcc car il est plus couramment utilisé, mais
- clang est aussi une option valable;
+ clang est aussi une option valable (et mon choix personnel);
 
  - sous windows clang est plus facile et naturel à utiliser, si pour une raison
  quelconque vous voulez utiliser gcc il vous faudra passer par MinGW;
@@ -143,7 +145,7 @@ Dans tous les tutoriels :
 
 Souvent pour compiler vos projets vous ne voudrez pas réécrire toutes vos lignes
 de compilation à la main, pour cela je vous recommande l'omniprésent make s'il
-est disponible sur votre plateforme. make peut auss trouver seul comment
+est disponible sur votre plateforme. make peut aussi trouver seul comment
 compiler des projets simples en C, et son usage sera détaillé pendant les
 tutoriels.
 
@@ -183,9 +185,8 @@ trouver les problèmes dans votre code. Les deux outils que je connais sont :
  - valgrind : Un outil de debuggage en ligne de commande, je n'en ai jamais eu
  l'usage mais il est apparement très puissant.
 
-Vous ne devriez pas avoir besoin de debugger pour ce tutoriel, mais sous windows
-normallement si vous avez installé clang correctement vous devriez avoir accès à
-lldb directement. Pour tester cela vous pouvez utiliser "lldb.exe -v" dans la
-ligne de commande
+Sous Windows, si vous avez installé clang correctement vous devriez avoir accès
+à lldb. Pour tester cela vous pouvez utiliser "lldb.exe -v" dans la ligne de
+commande.
 
 Vous êtes maintenant prêts à suivre le tutoriel :-)
