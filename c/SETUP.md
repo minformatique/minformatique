@@ -135,9 +135,9 @@ compiler des projets simples en C, et son usage sera détaillé pendant les
 tutoriels.
 
 <h3>IMPORTANT</h3>
-Pour ceux qui suivent ce tutoriel sous Windows, je suppose en permanence que
-vous travaillez en permanence depuis l'invite de commande de git (i.e. git bash).
-Si ce n'est pas le cas certains Makefile (tous ?) risquent de mal se comporter.
+Pour ceux qui suivent ce tutoriel sous Windows, je suppose que vous travaillez
+en permanence depuis l'invite de commande de git (i.e. git bash). Si ce n'est
+pas le cas certains Makefile (tous ?) risquent de mal se comporter.
 
 # 6 - Debugger
 
