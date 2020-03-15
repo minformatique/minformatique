@@ -3,12 +3,10 @@
 Ce fichier explique brièvement comment mettre en place un environnement de
 développement en C et liste les outils les plus courants en lien avec le C.
 
-## IMPORTANT:
-
-Le gros de ce tutoriel a été écrit pour linux, et les Makefile ont été faits en
-partant du principe que vous utilisez gcc. Si vous souhaitez utiliser un autre
-OS ou compilateur vous devrez adapter les Makefile ou bien modifier le code
-(dans le cas où vous seriez sous Windows ou MacOS).
+## IMPORTANT
+Ce tutoriel était à l'origine écrit pour Linux et a ensuite été porté (en
+quasi totalité) sous Windows. Il se peut que des fautes subsistent sous Windows
+malgré nos efforts.
 
 # 1 - IDE ou éditeur de code ?
 
