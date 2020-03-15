@@ -107,7 +107,8 @@ liblinux : pile.c pile.h
 # définies dans votre dll. Ce wrapper peut être généré automatiquement par clang,
 # moyennant une commande qui n'a rien à envier à son équivalent UNIX.
 libwindows: pile.c pile.h
-		clang.exe -c -o pile.o pile.c
-		clang.exe -shared -o pile.dll pile.o -Wl,--out-implib,libPile.lib
+		clang.exe -c -o pile.o pile_w.c
+		clang.exe -shared -o pile.dll pile.o
+		# implib.exe /s pile.lib pile.dll
 		chmod -x pile.dll
-		cp pile.dll libPile.lib pile.h ../
+		cp pile.dll pile.lib pile.h ../

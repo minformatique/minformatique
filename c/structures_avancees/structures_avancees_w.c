@@ -453,10 +453,8 @@ int mauvais_produire_machine(Machine instance, char *identifiant) {
   raccourcie qui est l'opérateur de déreférence ->
   */
   instance.energie = 0;
-  printf("%s\n","rouge");
   printf("%s %s\n", instance.identifiant, identifiant);
   strncpy_s(instance.identifiant, 8 * sizeof(char), identifiant, _TRUNCATE);
-  printf("%s\n","rouge");
   /*
   Au cas où on nous ait passé un mauvais identifiant on place un bit de
   terminaison à la fin de l'identifiant (cf le tutoriel sur la librairie

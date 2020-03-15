@@ -92,7 +92,7 @@ CC_WIN		:= clang.exe
 #  librairie est nommée "libPile.dll".
 
 FLAGS_UNIX	:= -Wall -g -L ./ -lPile
-FLAGS_WIN	:= -Wall -g ./libPile.dll
+FLAGS_WIN	:= -Wall -g -L ./ -lpile
 OUTPUT_UNIX	:= calculatrice.elf
 OUTPUT_WIN	:= calculatrice.exe
 
@@ -134,5 +134,5 @@ $(LIBRAIRIE_WIN) :
 linux: $(OUTPUT_UNIX)
 	echo "Compilation de $(OUTPUT_UNIX) achevée."
 
-windows: 
-	echo "Pas de support de Windows pour l'instant."
+windows: $(OUTPUT_WIN) 
+	echo "Compilation de $(OUTPUT_WIN) achevée."
