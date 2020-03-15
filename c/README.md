@@ -14,7 +14,7 @@ Notez que sur chaque fichier, la difficulté des notions abordées en commentair
 est précisée afin que vous puissiez passer ce qui ne vous intéresse pas.
 
 Dans la mesure où la plupart des tutoriels ont été écrits pour Linux et pour
-Windows, vous trouverez tout en double dans les dossiers des tutoriel.
+Windows, vous trouverez tout en double dans les dossiers des tutoriels.
 Par convention (remplacer foo en fonction du contexte):
  - foo.c désigne le code source pour Linux;
  - foo_w.c désigne le code source pour Windows;
