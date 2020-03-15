@@ -295,7 +295,7 @@ int main(int argc, char const *argv[]) {
          "Plus difficile, écrivez \"<un nombre> + <un autre nombre>\"");
   int first_int;
   int second_int;
-  fscanf(stdin, "%d+%d", &first_int, &second_int);
+  fscanf(stdin, "%d + %d", &first_int, &second_int);
   printf("Resultat : %d + %d = %d\n", first_int, second_int,
          first_int + second_int);
 
