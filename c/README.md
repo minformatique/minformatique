@@ -21,6 +21,24 @@ Par convention (remplacer foo en fonction du contexte):
  - "make linux" est la commande à utiliser pour compiler sous Linux;
  - "make windows" est la commande à utiliser pour compiler sous Windows;
 
+<h3>IMPORTANT SOUS WINDOWS</h3>
+Si vous suivez le tutoriel sous windows vous devriez rapidement voir que les
+exécutables que vous compilez sont très longs à s'exécuter. Cela est dû aux
+antivirus sous windows, qui effectuent un scan complet du fichier que vous
+demandez d'exécuter (car ce dernier n'est pas signé, longue histoire ...).
+
+En fait avant de lancer votre fichier pour de vrai, l'antivirus va le faire
+tourner un peu dans un conteneur (une sandbox précisément) pour voir s'il fait
+quelque chose de suspect. Votre programme ne s'exécutera qu'une fois l'analyse
+terminée. Notez aussi que si vous faites trop de fautes dans vos programmes en
+C (en particulier l'usage de fonctions marquées "insecure"), il se peut que
+votre antivirus détruise préventivement le programme que vous venez de
+compiler.
+
+Pour la petite histoire, la raison pour laquelle cela n'arrive pas en Java
+ou en Python est que votre code est exécuté au sein d'une autre application
+(la JVM et l'interpréteur python respectivement) qui est elle bien signée
+(i.e. publiée par des gens de confiance).
 
 #                                   Parcours
 

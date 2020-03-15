@@ -98,6 +98,8 @@ sont de loin :
  fera exactement la même chose que ce que vous aviez écrit. Les executables
  produits par gcc sont extrèmement compacts et optimisés, et la vitesse de
  compilation de gcc est encore aujourd'hui imbattable.
+ Pour installer gcc sous linux je vous recommande d'utiliser le package manager
+ de votre choix, par exemple sous debian "sudo apt install gcc".
 
  - clang : Depuis bien des années l'industrie cherche à remplacer le C (qui date
  de 1972!) par un langage plus moderne, et pour accélerer cette émergence
@@ -107,6 +109,15 @@ sont de loin :
  toujours plus obscur gcc, le projet LLVM a été utilisé pour créer un
  compilateur C nommé clang. clang est également très performant dans ses
  optimisations de code et ses temps de compilation même s'il n'égale pas gcc.
+ Sous debian, vous pouvez installer clang avec "sudo apt install clang". Pour
+ installer clang sous Windows, vous pouvez le télécharger depuis
+ https://releases.llvm.org/9.0.0/LLVM-9.0.0-win64.exe . Attention, pour pouvoir
+ utiliser clang depuis la ligne de commande, vous devez ajouter clang au PATH de
+ windows. Je vais avoir du mal à vous expliquer comment faire avec du texte, je
+ vous conseille de regarder des vidéos sur Youtube pour voir comment on fait
+ cela. C'est l'une des étapes pénibles sous Windows, et vous aurez besoin de le
+ faire plusieurs fois ici. Pour vous aider un peu, sur ma machine le chemin que
+ j'ai du ajouter au path est : "C:/Program Files/LLVM/bin".
 
  - msvc : Sous Windows seulement, "Microsoft Visual C", il s'agit du compilateur
  C utilisé utilisé en interne par Visual Studio. Je le met ici seulement pour
@@ -125,6 +136,10 @@ un meilleur choix :
  - sous OSX (i.e. Mac) je vous recommande plutôt clang même si je n'ai jamais eu
  l'occasion de développer sous Mac.
 
+Dans tous les tutoriels :
+ - Si vous êtes sous Linux je suppose que vous utilisez gcc ou clang.
+ - Si vous êtes sous Windows je suppose que vous utilisez clang.
+ - Si vous êtes sous Mac je suppose que vous saurez vous débrouiller seul ;-)
 
 # 5 - make
 
@@ -139,6 +154,21 @@ Pour ceux qui suivent ce tutoriel sous Windows, je suppose que vous travaillez
 en permanence depuis l'invite de commande de git (i.e. git bash). Si ce n'est
 pas le cas certains Makefile (tous ?) risquent de mal se comporter.
 
+Installer git (et git-bash) sous windows est assez facile, n'oubliez juste pas
+de créer un raccourci vers git bash pour vous faire gagner du temps pour plus
+tard. Vous pouvez sous windows télécharger git à l'adresse :
+https://github.com/git-for-windows/git/releases/download/v2.25.1.windows.1/Git-2.25.1-64-bit.exe
+
+Toujours sous Windows, vous pouvez télécharger make à l'adresse :
+http://gnuwin32.sourceforge.net/downlinks/make.php
+Cette adresse devrait vous rediriger vers SourceForge qui vous enverra
+automatiquement le fichier de setup assez rapidement. Attention, comme pour
+clang, vous devrez ajouter make à votre PATH pour pouvoir l'utiliser en ligne
+de commande. Sur ma machine, le chemin à ajouter au PATH est :
+"C:/Program Files (x86)/GnuWin32/bin"
+
+Sous debian vous pouvez tout installer avec "sudo apt install make git".
+
 # 6 - Debugger
 
 En plus de cela vous aurez surement besoin d'outils de débuggages afin de
@@ -149,8 +179,15 @@ trouver les problèmes dans votre code. Les deux outils que je connais sont :
  internet) et est souvent le débuggeur utilisé en interne par les IDE. gdb est
  suffisant pour la plupart des problèmes que vous rencontrerez.
 
- - valgrind : Un outil de debuggage en ligne de commande, je n'en ai jamais eu
- l'usage mais l'outil est apparement utile.
+ - lldb : Version LLVM de gdb, l'usage est à peu près le même mais je trouve
+ personnelement que lldb est un peu plus agréable que gdb.
 
+ - valgrind : Un outil de debuggage en ligne de commande, je n'en ai jamais eu
+ l'usage mais il est apparement très puissant.
+
+Vous ne devriez pas avoir besoin de debugger pour ce tutoriel, mais sous windows
+normallement si vous avez installé clang correctement vous devriez avoir accès à
+lldb directement. Pour tester cela vous pouvez utiliser "lldb.exe -v" dans la
+ligne de commande
 
 Vous êtes maintenant prêts à suivre le tutoriel :-)
