@@ -8,6 +8,6 @@ Dans chaque sous-dossier vous trouver un Makefile déjà prêt afin que vous pui
  - Sous Windows, vous pouvez compiler en utilisant "make windows";
 
 # Difficulté
-pgcd - 1*
-collatz - 1* (mais la partie "Solution est plutôt 2**~3***)
-countchar - 1*
+ - pgcd - 1\*
+ - collatz - 1\* (mais la partie "Solution est plutôt 2\*\*~3\*\*\*)
+ - countchar - 1\*

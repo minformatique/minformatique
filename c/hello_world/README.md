@@ -1,7 +1,7 @@
 #                                 Contenu
 
 Le tutoriel hello_world a simplement pour but de montrer à quoi un programme
-simple en C peut ressembler. Le niveau global de ce fichier est 1*, donc il
+simple en C peut ressembler. Le niveau global de ce fichier est 1\*, donc il
 devrait être facilement abordable par tous, même si certains aspects peuvent
 être passés si vous ne voulez pas rentrer dans le détail.
 
