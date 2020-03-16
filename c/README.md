@@ -21,6 +21,7 @@ Par convention (remplacer foo en fonction du contexte):
  - "make linux" est la commande à utiliser pour compiler sous Linux;
  - "make windows" est la commande à utiliser pour compiler sous Windows;
 
+Les exercices se trouvent dans les sous-dossiers "tp" des différents tutoriels.
 <h3>IMPORTANT SOUS WINDOWS</h3>
 Si vous suivez le tutoriel sous windows vous devriez rapidement voir que les
 exécutables que vous compilez sont très longs à s'exécuter. Cela est dû aux
