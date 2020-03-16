@@ -10,7 +10,7 @@ intéresse, mais cela ne veut pas dire que ces limitations n'existent pas!
 
 Un cas "courant" que l'on peut rencontrer est le problème d'alignement de 
 pointeur. Fondamentalement, la question de l'alignement de pointeurs vient du 
-fait qu'un processeur est un circuit eléctronique (certes très complexe) dans 
+fait qu'un processeur est un circuit électronique (certes très complexe) dans 
 lequel on a branché un grand nombre d'instructions afin de faire tout ce dont 
 on a besoin.
 
@@ -32,24 +32,25 @@ pour vous de toujours utiliser des pointeurs alignés, c'est pourquoi vous
 n'avez presque jamais à vous soucier de cela. Les problèmes d'alignement de 
 pointeurs arrivent plutôt lorsque l'on travaille sur des micro-controlleurs et 
 que l'on essaie de faire des chose très bas niveau qui nécessitent de rentrer 
-des adresses mémoire à la main. Si cela vous intéresse vous pouvez en 
-apprendre plus sur Wikipédia.
+des adresses mémoire à la main.
 
 Notez enfin que sur votre PC, il est probable que le processeur que vous 
 utilisez accepte n'importe quelle adresse avec seulement une pénalité en 
 performance. En revanche si vous travaillez sur des micro-controlleurs (par 
 exemple des cartes arduino) ce ne sera probablement pas le cas. Par exemple le 
 jeu d'instruction ARMv6 (~1980) pouvait causer des erreurs silencieuses si on 
-manipulait des données non alignées.
+manipulait des données non alignées. Si cela vous intéresse vous pouvez en 
+apprendre plus sur Wikipédia.
 
 Attention, pour l'alignement de pointeurs seul le bit de départ et la longueur 
-lue compte. Imaginons un entier de 4 octets se trouvant à l'adresse 24. 
-Lorsque l'on donnera une valeur entière, certes on manipule des octets qui ne 
+lue comptent. Imaginons un entier de 4 octets se trouvant à l'adresse 24. 
+Lorsqu'on lui donnera une valeur entière, certes on manipulera des octets qui ne
 sont pas sur une adresse multiple de 4 (ceux sur les 25ème, 26ème et 27ème 
 adresses) mais comme notre opération a commencé sur un pointeur bien aligné 
 il n'y a pas de problèmes.
 
-Pour résoudre ce problème vous aurez sans doute besoin de récupérer 
-l'adresse d'un poniteur sous forme d'un nombre entier. Je vous laisse chercher 
-comment faire sur internet, la solution canonique n'est pas très complexe une 
+Le but du TP est d'écrire une fonction qui vérifie qu'un pointeur est bien
+aligné. Pour résoudre ce problème vous aurez sans doute besoin de récupérer 
+l'adresse d'un pointeur sous forme d'un nombre entier. Je vous laisse chercher 
+comment faire sur internet : la solution canonique n'est pas très complexe une 
 fois qu'elle a été trouvée.

@@ -5,7 +5,7 @@ produit matriciel.
 Pour simplifier l'écriture, dans cet exercice on travaillera uniquement avec 
 des matrices de taille 40 x 40 (cela rendra le code plus lisible). Les matrices 
 sont initialisées avec des nombres aléatoires au début du programme, donc 
-pour vérifier que votre code fonctionne je propose de simplement vérifier que 
+pour tester que votre code fonctionne je propose de simplement vérifier que 
 la formule suivante est vérifiée dans votre implémentation du produit 
 matriciel :
 
