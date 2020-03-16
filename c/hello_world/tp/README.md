@@ -9,5 +9,5 @@ Dans chaque sous-dossier vous trouver un Makefile déjà prêt afin que vous pui
 
 # Difficulté
  - pgcd - 1\*
- - collatz - 1\* (mais la partie "Solution est plutôt 2\*\*~3\*\*\*)
+ - collatz - 1\* (mais la partie "Solution" est plutôt 2\*\*~3\*\*\*)
  - countchar - 1\*
