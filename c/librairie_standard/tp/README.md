@@ -10,4 +10,4 @@ Dans chaque sous-dossier vous trouver un Makefile déjà prêt afin que vous pui
 # Difficulté
  - printf - 3\*\*\* (réécrire la fonction variadique printf à l'aide de putchar)
  - grep - 2\*\* (chercher un mot sur les lignes de l'input)
- - curl - 1\* (utiliser des outils de l'OS pour télécharger un fichier)
+ - curl - 1\* pour Linux - 3\*\*\* pour Windows (utiliser des outils en ligne de commande de l'OS)
