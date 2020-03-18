@@ -578,7 +578,7 @@ int main(int argc, char const *argv[]) {
   Je finirai ce petit tutoriel sur un pattern de code que l'on retrouve beaucoup
   dans les petits programmes en C que j'écris parce qu'il combine simplicité et
   efficacité. Un cas de figure dans lequel vous tomberez souvent est que vous
-  aurez besoin d'utiliser un "system call" mais avec des arguments qui vont
+  aurez besoin d'utiliser une application mais avec des arguments qui vont
   changer suivant le contexte. Par exemple si vous essayez de télécharger un
   fichier sous linux, vous pouvez d'abord chercher à voir quel outil est
   disponible en regardant si curl ou wget est disponible. Suivant le resultat de
