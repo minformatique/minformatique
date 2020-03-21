@@ -1,0 +1,47 @@
+CMT Recherche par dichotomie de l'approximation entière de la racine carre
+CMT Le nombre dont on cherche la racine
+ARG A
+CMT Borne inférieure de notre dichotomie
+LET 0 B
+CMT Borne supérieure de notre dichotomie
+LET A C
+CMT Tant que C - A != 1
+CMT on calcule la distance entre nos bornes
+LET C D
+SUB B D
+SUB 1 D
+CMT Si D == 0, on sort de la boucle
+JPZ 37 D
+CMT Sinon on exécute la boucle, on commence par calculer le milieu de B C
+LET B D
+ADD C D
+DIV 2 D
+CMT On passe D au carré pour le comparer à A
+MUL D D
+CMT A > D ssi D / A == 0
+DIV A D
+CMT Si D est 0, root(A) est au dessu du milieu
+JPZ 31 D
+CMT Sinon root(A) est au dessous du milieu
+ADD B C
+DIV 2 C
+CMT On retourne en haut de notre boucle
+LET 0 D
+JPZ 8 D
+CMT Ce bloc correspond à si root(A) est au dessus du milieu
+ADD C B
+DIV 2 B
+CMT On retourne en haut de notre boucle
+LET 0 D
+JPZ 8 D
+CMT Ce bloc correspond à la sortie de la boucle, on renvoie le résultat
+CMT Deux cas possibles (trouvés en testant le programme)
+CMT Cas 1: Si C * C == A on renvoie C 
+LET C D
+MUL C D
+SUB A D
+JPZ 46 D
+CMT Sinon on renvoie B
+RET B
+CMT Ce bloc correspond à C * C == A
+RET C

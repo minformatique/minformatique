@@ -1,0 +1,16 @@
+CMT Lecture des deux nombres depuis l'input
+ARG A
+ARG B
+CMT Boucle
+LET A C
+MOD B C
+CMT Si le reste est 0, on a fini
+JPZ 15 C
+CMT Sinon ...
+LET B A
+LET C B
+CMT Retour en haut de la boucle
+LET 0 D
+JPZ 4 D
+CMT La boucle est terminée
+RET B

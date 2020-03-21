@@ -1,0 +1,19 @@
+CMT On lit n le nombre d'arguments
+ARG A
+CMT On initialise le total
+LET 0 B
+CMT C sera l'itérateur de notre boucle
+LET A C
+CMT Tant que C != 0
+JPZ 16 C
+CMT On ajoute un entier au total
+ARG D
+ADD D B
+SUB 1 C
+CMT On continue notre boucle
+LET 0 D
+JPZ 7 D
+CMT On moyenne notre total
+CMT Notez que notre moyenne est un nombre entier, ce qui n'est pas génial
+DIV A B
+RET B

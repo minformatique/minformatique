@@ -1,0 +1,10 @@
+CMT Lecture des nombres en entrée
+ARG A
+ARG B
+CMT On copie B pour faire le calcul) 
+LET B C
+DIV A C
+CMT A > B ssi B / A == 0
+JPZ 10 C
+RET B
+RET A

@@ -1,0 +1,15 @@
+CMT On lit les arguments
+ARG A
+ARG B
+LET 1 C
+CMT D est utile pour des sauts sans condition
+LET 0 D
+CMT Tant que b != 0
+JPZ 14 B
+CMT Sinon on exécute la boucle
+MUL A C
+SUB 1 B
+CMT Retour en haut de la boucle
+JPZ 7 D
+CMT On renvoie la valeur de C
+RET C
